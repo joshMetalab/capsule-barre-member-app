@@ -302,10 +302,12 @@ body:has(#view.cici-v) .toast{bottom:calc(196px + env(safe-area-inset-bottom))} 
 #app.home-bleed .you-hero:not(.sm){margin-left:-16px;margin-right:-16px;width:calc(100% + 32px);height:calc(220px + var(--home-nav));border-radius:0}
 #app.home-bleed .you-hero:not(.sm) .you-hero-vid{position:absolute;inset:0;width:100%;height:100%}
 #app.home-bleed .cici-hello{margin:0 -16px 14px;width:calc(100% + 32px);height:calc(320px + var(--home-nav));border-radius:0}
+#app.home-bleed .look-hero{margin-left:-16px;margin-right:-16px;width:calc(100% + 32px);height:calc(480px + var(--home-nav));border-radius:0}
+#app.home-bleed .look-hero .lh-chip{top:calc(var(--home-nav) + 8px)}
 .cici-hello .cici-hd{position:absolute;top:calc(var(--home-nav, 8px) + 4px);left:12px;right:12px;z-index:3;margin:0;color:#fff}
 .cici-hello .cici-hd h1,.cici-hello .cici-hd .icb{color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.45)}
 .cici-hello .cici-hd .sub{color:rgba(255,255,255,.9);text-shadow:0 1px 2px rgba(0,0,0,.45)}
-@media (max-width:350px){#app.home-bleed .chome{margin-left:-12px;margin-right:-12px;width:calc(100% + 24px)}#app.home-bleed .you-hero:not(.sm){margin-left:-12px;margin-right:-12px;width:calc(100% + 24px)}#app.home-bleed .cici-hello{margin-left:-12px;margin-right:-12px;width:calc(100% + 24px)}}
+@media (max-width:350px){#app.home-bleed .chome{margin-left:-12px;margin-right:-12px;width:calc(100% + 24px)}#app.home-bleed .you-hero:not(.sm){margin-left:-12px;margin-right:-12px;width:calc(100% + 24px)}#app.home-bleed .cici-hello{margin-left:-12px;margin-right:-12px;width:calc(100% + 24px)}#app.home-bleed .look-hero{margin-left:-12px;margin-right:-12px;width:calc(100% + 24px)}}
 .chome .cg::before{display:none}
 #home-cici #home-wear{display:none}
 .sheet{border-radius:28px 28px 0 0;background:#FFF8F6;animation:sheetup .28s cubic-bezier(.2,.9,.3,1.2)}
@@ -478,12 +480,12 @@ button:active:not([disabled]){transform:scale(.94)}
 .you-hero-foot .you-hero-info{position:static}
 .you-hero-name{font-size:18px;font-weight:700;line-height:1.2}
 .you-hero-lvl{font-size:13px;opacity:.85;margin-top:2px}
-/* bk-modal — booking confirmation with video + glass text layer */
-.bk-modal{position:relative;overflow:hidden;border-radius:16px;margin-bottom:12px;background:#1a0a0f}
-.bk-modal-vid{width:100%;height:240px;object-fit:cover;display:block}
-.bk-modal-glass{padding:14px 16px 16px;background:rgba(255,255,255,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.bk-modal-glass .who{font-size:13px;font-weight:700;color:var(--ox);margin-bottom:6px}
-.bk-modal-glass p{margin:0 0 4px}
+/* bk-modal — booking confirmation: the message sits on the video, no fill */
+.bk-modal{position:relative;overflow:hidden;height:300px;border-radius:16px;margin-bottom:12px;background:#1a0a0f}
+.bk-modal-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 12%;display:block}
+.bk-modal-glass{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:36px 14px 14px;background:transparent;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.55)}
+.bk-modal-glass .who{font-size:13px;font-weight:700;color:#fff;margin-bottom:6px}
+.bk-modal-glass p,.bk-modal-glass .sub{margin:0 0 4px;color:#fff}
 </style>
 </head>
 <body>
@@ -2634,7 +2636,7 @@ function vSettings() {
   h += `<h2>${L3("About","Giới thiệu","정보")}</h2><p class="sub sm" id="demo-safety"><b>${L3("Demo safety: prototype only.","An toàn bản demo: chỉ là bản thử nghiệm.","데모 안전 기능: 프로토타입 전용.")}</b> ${L3("Cici's safety replies follow a fixed, tested list and may miss new wording. The 'Need help?' link is always under the chat. The real app will use a stronger check.","Các câu trả lời an toàn của Cici dựa trên một danh sách cố định đã kiểm thử và có thể bỏ sót cách diễn đạt mới. Liên kết 'Cần hỗ trợ?' luôn ở dưới khung chat. Ứng dụng thật sẽ dùng cách kiểm tra mạnh hơn.",CICI_KO + "의 안전 답변은 테스트된 고정 목록을 따르며 새로운 표현은 놓칠 수 있어요. '도움이 필요하세요?' 링크는 항상 대화 아래에 있어요. 실제 앱은 더 강력한 검사를 사용할 거예요.")}</p>`;
   return h;
 }
-function syncHomeBleed() { const app = $("#app"); if (app) app.classList.toggle("home-bleed", (ST.tab === "home" || ST.tab === "you" || (ST.tab === "cici" && CH.cici && !CH.cici.msgs.length)) && !ST.page && !ST.store); }
+function syncHomeBleed() { const app = $("#app"); if (app) app.classList.toggle("home-bleed", ((ST.tab === "home" || ST.tab === "you" || (ST.tab === "cici" && CH.cici && !CH.cici.msgs.length)) && !ST.page && !ST.store) || (ST.page === "look" && !ST.store)); }
 function renderView() { if (ST.page === "p2char" && !P2()) ST.page = null; if (!FLAGS.quest) { if (QUEST_RE.test(ST.page || "")) ST.page = null; if (QUEST_RE.test(ST.tab || "")) ST.tab = "home"; if (QUEST_RE.test(ST.bkFrom || "")) ST.bkFrom = "home"; } if (ST.tab === "book" || ST.tab === "ask") ST.tab = "cici"; /* NT-7: old tabs land on Cici */ syncHomeBleed(); $("#view").classList.toggle("cici-v", ST.tab === "cici" && !ST.page && !ST.store); $("#view").innerHTML = ST.page === "bookings" ? vBookings() : ST.page === "notif" ? vNotif() : ST.page === "nset" ? vNSet() : ST.page === "wallet" ? vWallet() : ST.page === "vouchers" ? vVouchers() : ST.page === "settings" ? vSettings() : ST.page === "points" ? pointsBlock() + storeAppBtn() : ST.page === "look" ? vLook() : ST.page === "p2char" && P2() ? p2CharPage() : ST.page === "shop" ? shopPage() : ST.page === "auth" ? authPage() : ST.page === "onboard" ? onboardPage() : ST.page === "profile-edit" ? profileEditPage() : ST.store ? vStore(ST.store) : ({ home: vHome, discover: vDiscover, look: vLook, cici: vCici, you: vYou }[ST.tab] || vHome)(); }
 /* MVP-L1/L7: the unlock animation plays once, on the next normal Home view (deferred while a crisis/urgent turn is in force, A6) */
 function maybeUnlock() {
