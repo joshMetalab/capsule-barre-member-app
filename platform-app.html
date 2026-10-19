@@ -3397,7 +3397,6 @@ const STAFF_TX = {
   noBooking: ["Member has no booking here", "Khách không có lịch đặt ở đây", "이 매장에 예약이 없어요"],
   limit: ["Daily Mark attended limit reached", "Đã đạt giới hạn xác nhận trong ngày", "오늘 방문 처리 한도에 도달했어요"],
   offline: ["Can't confirm offline. Try again", "Không thể xác nhận khi mất mạng. Thử lại", "오프라인에서는 확인할 수 없어요. 다시 시도하세요"],
-  offToggle: ["Demo: store app offline", "Demo: ứng dụng cửa hàng mất mạng", "데모: 매장 앱 오프라인"],
   flagged: ["Store flagged for audit: {n} marks today (over 20)", "Cửa hàng bị gắn cờ kiểm tra: {n} lượt hôm nay (trên 20)", "감사 대상 매장: 오늘 {n}건 (20건 초과)"],
   marksLeft: ["Mark attended left today: {n}/10", "Lượt xác nhận còn lại hôm nay: {n}/10", "오늘 남은 방문 처리: {n}/10"]
 };
@@ -3678,7 +3677,6 @@ function confirmSheet(msg) {
     <label class="sr" for="sc-r-${b.id}">${esc(sT("reason"))}</label><select id="sc-r-${b.id}" style="min-height:44px;font:inherit;border-radius:10px;border:1px solid var(--line);padding:0 8px"><option value="">${esc(sT("pick"))}</option>${["no_phone", "app_issue", "other"].map(r => `<option value="${r}">${esc(sT("r_" + r))}</option>`).join("")}</select>
     <button class="btn sec dk" data-act="pvcmark" data-v="${b.id}">${esc(sT("mark"))}</button></div></div>`).join("") : `<p class="sub sm" style="margin:0">${esc(sT("none"))}</p>`}<p class="sub sm" id="sc-left" style="margin:0">${esc(sT("marksLeft", { n: left }))}</p></div>`;
   if (att.length) h += `<h2>${esc(sT("confirmed"))}</h2><div class="card stack">${att.map(([id, a]) => `<div class="row sm"><span class="grow">Mina · ${esc(fDateP(a.t))}</span></div>`).join("")}</div>`;
-  h += `<label class="row sm" style="min-height:44px"><input type="checkbox" id="sc-off" data-act="pvcoff" ${PV.storeOnline ? "" : "checked"} class="cb44"><span class="grow">${esc(sT("offToggle"))}</span></label>`;
   openSheet(sheetHd(sT("title") + " · " + S[sid].name) + `<div id="sc-sheet">${h}</div>`, sT("title"));
 }
 function scDone(r) { render(); if (r.ok) maybeUnlock(); confirmSheet(sT(r.key, { n: (r.pts || 0) + (r.bonus || 0) })); }
@@ -3713,8 +3711,7 @@ function storeSheet(msg) {
   ${att.map(([id, a]) => `<div class="row wrap" style="gap:8px"><span class="grow sm">Confirmed: Mina · ${esc(fDateP(a.t))}</span>${now - a.t <= 14 * DAY ? `${opt([["staff_error", "Staff error"], ["service_refund", "Service refund"], ["fraud", "Fraud"], ["other", "Other (note)"]], "pv-rreason-" + id)}<button class="btn ghost" data-act="pvrev" data-v="${id}">Reverse visit</button>` : `<span class="sub sm">Reverse visit unavailable (over 14 days)</span>`}</div>`).join("")}</div>`;
   if (PV.flag) h += `<h2>Validate</h2><div class="card stack"><label class="sm" for="pv-vcode">Enter code</label><input id="pv-vcode" autocomplete="off" maxlength="6" style="min-height:44px;font:inherit;font-size:20px;letter-spacing:3px;border-radius:10px;border:1px solid var(--line);padding:0 10px" value="${esc(PVCODE || "")}">
     <div class="row wrap" style="gap:8px"><button class="btn sec" data-act="pvscanv">Scan member code</button><button class="btn" data-act="pvvalidate">Validate</button></div>
-    ${PVVAL ? (PVVAL.ok ? `<div class="card sm" id="pv-vres"><b>${esc(pvTx(PVVAL.reward))}</b><br>Member: <b>${esc(PVVAL.member)}</b> (check against the person at the counter)<br>Status: ${esc(PVVAL.status)}<br>${esc(pvTx(PVVAL.terms) || "")}</div><button class="btn full" data-act="pvredeem">Redeem</button>` : `<p class="sm" id="pv-vres"><b>${esc(PVVAL.msg)}</b></p>`) : ""}
-    <label class="row sm" style="min-height:44px"><input type="checkbox" data-act="pvsoff" ${PV.storeOnline ? "" : "checked"} class="cb44"> Demo: Store app offline</label></div>`;
+    ${PVVAL ? (PVVAL.ok ? `<div class="card sm" id="pv-vres"><b>${esc(pvTx(PVVAL.reward))}</b><br>Member: <b>${esc(PVVAL.member)}</b> (check against the person at the counter)<br>Status: ${esc(PVVAL.status)}<br>${esc(pvTx(PVVAL.terms) || "")}</div><button class="btn full" data-act="pvredeem">Redeem</button>` : `<p class="sm" id="pv-vres"><b>${esc(PVVAL.msg)}</b></p>`) : ""}</div>`;
   h += `<h2>Rewards · New voucher</h2><div class="card stack" id="pv-new">${opt([["percent", "Percent off"], ["fixed", "Fixed amount off"], ["addon", "Free add-on"]], "pv-dtype")}
     ${[["cost", "Point cost"], ["value", "Value"], ["validFor", "Valid for (days)"], ["minStreak", "Min streak (days)"], ["minLevel", "Min level"]].map(([k, l]) => `<label class="row sm"><span class="grow">${l}${k === "cost" ? ` <span class="sub">≈ ${Math.floor((+PVDRAFT.cost || 0) / 50)} visits</span>` : ""}</span><input data-pvd="${k}" inputmode="numeric" value="${esc(PVDRAFT[k])}" style="width:96px;min-height:44px;font:inherit;border-radius:10px;border:1px solid var(--line);padding:0 8px"></label>`).join("")}
     ${err.length ? `<p class="sm" id="pv-derr" role="alert" style="color:#8E3346;margin:0"><b>${err.map(esc).join(" · ")}</b></p>` : ""}<button class="btn full" data-act="pvpublish" ${err.length ? "disabled" : ""}>Publish</button>
@@ -3745,14 +3742,12 @@ function pvAct(a, d, el) {
     case "pvsstore": PVSTORE = d.v; PVVAL = null; ($("#sc-sheet") ? confirmSheet : storeSheet)(); return;
     case "pvcscan": { const code = checkinCode(d.v); scDone(scanCheckin("staff:" + PVSTORE + "-desk", PVSTORE, ME, code)); return; }
     case "pvcmark": scDone(staffMark("staff:" + PVSTORE + "-desk", PVSTORE, ME, d.v, ($("#sc-r-" + d.v) || {}).value)); return;
-    case "pvcoff": PV.storeOnline = !el.checked; return;
     case "pvscan": { const r = confirmVisit(ME, d.v, "staff:" + PVSTORE + "-desk", undefined, PVSTORE); render(); storeSheet(r.ok ? (r.dup ? "Already recorded" : `Visit confirmed · +${r.pts + (r.bonus || 0)}${r.reason ? " (" + r.reason + ")" : ""}`) : (STAFF_ERR[r.err] || "No booking")); return; }
     case "pvmark": { const r = markAttended("staff:" + PVSTORE + "-desk", PVSTORE, ME, d.v, ($("#pv-mreason") || {}).value); render(); storeSheet(r.ok ? `Marked attended · +${r.pts + (r.bonus || 0)}` : r.err); return; }
     case "pvrev": { const r = reverseVisit("staff:" + PVSTORE + "-desk", ME, d.v, ($("#pv-rreason-" + d.v) || {}).value, "demo note"); render(); storeSheet(r.ok ? `Visit reversed · −${r.n}` : r.err); return; }
     case "pvscanv": { const c = ME.claims.find(c => c.code && c.status === "ready"); PVCODE = c ? c.code : ""; PVVAL = validateCode(PVSTORE, PVCODE); storeSheet(); return; }
     case "pvvalidate": PVCODE = ($("#pv-vcode") || {}).value; PVVAL = validateCode(PVSTORE, PVCODE); storeSheet(); return;
     case "pvredeem": { const r = redeem("staff:" + PVSTORE + "-desk", PVSTORE, PVCODE); PVVAL = null; render(); storeSheet(r.ok ? "Redeemed · Used" : r.msg); return; }
-    case "pvsoff": PV.storeOnline = !el.checked; return;
     case "pvpublish": { if (!DEMO_MODE) return; const r = publish(Object.assign({ store: PVSTORE, title: "New voucher", terms: "Store voucher" }, PVDRAFT)); render(); storeSheet(r.ok ? "Published" : r.errors.join(" · ")); return; }
     case "pvpause": { const v = PV.defs.find(x => x.id === d.v); v.paused = !v.paused; render(); storeSheet(); return; }
   }
