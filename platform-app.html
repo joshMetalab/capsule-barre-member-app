@@ -319,10 +319,11 @@ body:has(#view.cici-v) .toast{bottom:calc(196px + env(safe-area-inset-bottom))} 
 #app.home-stage #home-cici::after{height:min(58%, 480px)}
 #app.home-stage #home-cici .home-lower{gap:12px;bottom:124px}
 #home-cici .home-dock{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;width:calc(100% - 36px);margin:4px 0 2px}
-#home-cici .home-chip{color:#7A3058;border:0;border-radius:20px;min-height:84px;padding:12px 8px;box-shadow:0 8px 18px rgba(122,48,88,.1);text-shadow:0 1px 0 rgba(255,255,255,.55);font:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:0}
-#home-cici .home-chip[data-v=mis]{background:rgba(244,184,206,.55)}
-#home-cici .home-chip[data-v=opt]{background:rgba(231,168,188,.55);color:#6E284C}
-#home-cici .home-chip[data-v=next]{background:rgba(255,245,248,.55);color:#C45B86;border:1.5px solid rgba(240,180,200,.75)}
+#app{--home-wash:rgba(244,184,206,.55);--home-wash-2:rgba(231,168,188,.55);--home-wash-3:rgba(255,245,248,.55);--home-line:rgba(240,180,200,.75);--home-ink:#7A3058;--home-ink-2:#6E284C;--home-ink-3:#C45B86;--home-fab:#E7A8BC;--home-mark:#F4B8CE}
+#home-cici .home-chip{color:var(--home-ink);border:0;border-radius:20px;min-height:84px;padding:12px 8px;box-shadow:0 8px 18px rgba(43,35,38,.12);text-shadow:0 1px 0 rgba(255,255,255,.55);font:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:0}
+#home-cici .home-chip[data-v=mis]{background:var(--home-wash)}
+#home-cici .home-chip[data-v=opt]{background:var(--home-wash-2);color:var(--home-ink-2)}
+#home-cici .home-chip[data-v=next]{background:var(--home-wash-3);color:var(--home-ink-3);border:1.5px solid var(--home-line)}
 #home-cici .home-chip .ico{width:22px;height:22px}
 #home-cici .home-chip b,#home-cici .home-chip span{display:block;width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:center}
 #home-cici .home-chip b{font-size:17px;font-weight:800;line-height:1.15}
@@ -331,14 +332,14 @@ body:has(#view.cici-v) .toast{bottom:calc(196px + env(safe-area-inset-bottom))} 
 #home-cici #home-wear{display:none}
 #home-cici .home-pills{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap;max-width:calc(100% - 24px)}
 #home-cici .home-look{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.82);border-radius:999px;min-height:44px;padding:6px 16px;box-shadow:none;text-shadow:0 1px 2px rgba(0,0,0,.55);font:inherit;font-size:14px;font-weight:650;display:inline-flex;align-items:center;gap:6px;cursor:pointer}
-#home-cici .home-look .wear-acc *{fill:#F4B8CE}
-#home-cici .home-chat{position:relative;background:rgba(247,201,218,.55);color:#7A3058;border:0;border-radius:999px;min-height:44px;padding:6px 16px;box-shadow:0 6px 14px rgba(196,91,134,.16);text-shadow:0 1px 0 rgba(255,255,255,.55);font:inherit;font-size:14px;font-weight:750;display:inline-flex;align-items:center;gap:6px;cursor:pointer}
-#home-cici .home-chat .ico{width:18px;height:18px;stroke:#7A3058}
-#home-cici .home-chat .home-cdot{position:absolute;top:8px;right:8px;width:8px;height:8px;border-radius:50%;background:#E7A8BC;box-shadow:0 0 0 2px #F7C9DA}
-#home-cici #pv-notes .btn.sec{background:#F8D5E2;color:#7A3058;border-color:#E7A8BC}
-#app.home-stage nav.tabs button[aria-current=page]{color:#C45B86}
-#app.home-stage nav.tabs button.tab-cal .fab{background:#E7A8BC;color:#6E284C;box-shadow:0 8px 18px rgba(196,91,134,.28)}
-#app.home-stage nav.tabs button.tab-cal .ico{stroke:#6E284C}
+#home-cici .home-look .wear-acc *{fill:var(--home-mark)}
+#home-cici .home-chat{position:relative;background:var(--home-wash);color:var(--home-ink);border:0;border-radius:999px;min-height:44px;padding:6px 16px;box-shadow:0 6px 14px rgba(43,35,38,.12);text-shadow:0 1px 0 rgba(255,255,255,.55);font:inherit;font-size:14px;font-weight:750;display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+#home-cici .home-chat .ico{width:18px;height:18px;stroke:var(--home-ink)}
+#home-cici .home-chat .home-cdot{position:absolute;top:8px;right:8px;width:8px;height:8px;border-radius:50%;background:var(--home-mark);box-shadow:0 0 0 2px var(--home-wash)}
+#home-cici #pv-notes .btn.sec{background:var(--home-wash-3);color:var(--home-ink);border-color:var(--home-line)}
+#app.home-stage nav.tabs button[aria-current=page]{color:var(--home-ink-3)}
+#app.home-stage nav.tabs button.tab-cal .fab{background:var(--home-fab);color:var(--home-ink-2);box-shadow:0 8px 18px rgba(43,35,38,.16)}
+#app.home-stage nav.tabs button.tab-cal .ico{stroke:var(--home-ink-2)}
 .sheet{border-radius:28px 28px 0 0;background:#FFF8F6;animation:sheetup .28s cubic-bezier(.2,.9,.3,1.2)}
 .sheet-bg{animation:fadein .2s ease}
 #view{animation:viewin .25s ease}
@@ -680,6 +681,31 @@ const BG_MAP = {
   "bg-night":    "radial-gradient(ellipse at 30% 25%,#4f46e5 0%,transparent 35%),radial-gradient(ellipse at 70% 65%,#1e3a5f 0%,transparent 40%),radial-gradient(circle at 55% 5%,#818cf8 0%,transparent 20%),linear-gradient(160deg,#0f0a1e 0%,#1e1b4b 50%,#0c0f2e 100%)",
 };
 const COMP_MAP = { "comp-cat":"🐱","comp-axolotl":"🦎","comp-bunny":"🐰","comp-fox":"🦊" };
+/* Home chips, the Cici button, and the home tab accent follow the equipped shop background. */
+const HOME_THEME = {
+  "": { wash:"rgba(244,184,206,.55)", wash2:"rgba(231,168,188,.55)", wash3:"rgba(255,245,248,.55)", line:"rgba(240,180,200,.75)", ink:"#7A3058", ink2:"#6E284C", ink3:"#C45B86", fab:"#E7A8BC", mark:"#F4B8CE" },
+  "bg-sakura": { wash:"rgba(249,168,212,.55)", wash2:"rgba(244,184,206,.58)", wash3:"rgba(254,240,245,.62)", line:"rgba(249,168,212,.8)", ink:"#9D174D", ink2:"#831843", ink3:"#BE185D", fab:"#F9A8D4", mark:"#F9A8D4" },
+  "bg-peach": { wash:"rgba(254,215,170,.58)", wash2:"rgba(253,186,140,.52)", wash3:"rgba(255,247,237,.64)", line:"rgba(251,146,60,.55)", ink:"#9A3412", ink2:"#7C2D12", ink3:"#C2410C", fab:"#FDBA74", mark:"#FDBA74" },
+  "bg-lavender": { wash:"rgba(196,181,253,.55)", wash2:"rgba(167,139,250,.48)", wash3:"rgba(250,245,255,.64)", line:"rgba(167,139,250,.7)", ink:"#5B21B6", ink2:"#4C1D95", ink3:"#7C3AED", fab:"#C4B5FD", mark:"#C4B5FD" },
+  "bg-ocean": { wash:"rgba(147,197,253,.55)", wash2:"rgba(125,211,252,.5)", wash3:"rgba(240,249,255,.64)", line:"rgba(56,189,248,.7)", ink:"#1E3A8A", ink2:"#1E40AF", ink3:"#0369A1", fab:"#7DD3FC", mark:"#7DD3FC" },
+  "bg-forest": { wash:"rgba(167,243,208,.55)", wash2:"rgba(110,231,183,.48)", wash3:"rgba(240,253,244,.64)", line:"rgba(52,211,153,.7)", ink:"#065F46", ink2:"#064E3B", ink3:"#047857", fab:"#6EE7B7", mark:"#6EE7B7" },
+  "bg-sunset": { wash:"rgba(254,215,170,.55)", wash2:"rgba(252,165,165,.45)", wash3:"rgba(255,247,237,.64)", line:"rgba(251,146,60,.6)", ink:"#9A3412", ink2:"#7C2D12", ink3:"#C2410C", fab:"#FDBA74", mark:"#FB923C" },
+  "bg-aurora": { wash:"rgba(196,181,253,.5)", wash2:"rgba(125,211,252,.42)", wash3:"rgba(237,233,254,.58)", line:"rgba(167,139,250,.75)", ink:"#4C1D95", ink2:"#1E3A8A", ink3:"#6D28D9", fab:"#A78BFA", mark:"#C4B5FD" },
+  "bg-night": { wash:"rgba(165,180,252,.5)", wash2:"rgba(129,140,248,.42)", wash3:"rgba(238,242,255,.58)", line:"rgba(129,140,248,.75)", ink:"#312E81", ink2:"#1E1B4B", ink3:"#4338CA", fab:"#818CF8", mark:"#A5B4FC" }
+};
+function applyHomeTheme() {
+  const app = document.getElementById("app"); if (!app) return;
+  const t = HOME_THEME[(ST.shopEquipped && ST.shopEquipped.bg) || ""] || HOME_THEME[""];
+  app.style.setProperty("--home-wash", t.wash);
+  app.style.setProperty("--home-wash-2", t.wash2);
+  app.style.setProperty("--home-wash-3", t.wash3);
+  app.style.setProperty("--home-line", t.line);
+  app.style.setProperty("--home-ink", t.ink);
+  app.style.setProperty("--home-ink-2", t.ink2);
+  app.style.setProperty("--home-ink-3", t.ink3);
+  app.style.setProperty("--home-fab", t.fab);
+  app.style.setProperty("--home-mark", t.mark);
+}
 function shopSwatch(it, eq2) {
   const check = eq2 ? '<span class="seq-check">✓</span>' : "";
   if (it.cat === "bg") {
@@ -757,6 +783,7 @@ function shopPage() {
     <div class="shop-grid">${grid||`<p class="sub sm" style="grid-column:span 2;text-align:center;padding:24px 0">${esc(L3("Nothing here yet.","Chưa có gì.","아직 없어요."))}</p>`}</div>`;
 }
 function applyEquipped() {
+  applyHomeTheme();
   const view = document.getElementById("view"); if (view) view.style.background = BG_MAP[ST.shopEquipped.bg] || "";
   document.querySelectorAll(".cpic .ccbadge, .nhero .ccbadge").forEach(el => el.remove());
   const comp = ST.shopEquipped.companion;
