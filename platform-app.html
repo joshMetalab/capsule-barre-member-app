@@ -304,12 +304,41 @@ body:has(#view.cici-v) .toast{bottom:calc(196px + env(safe-area-inset-bottom))} 
 #app.home-bleed .cici-hello{margin:0 -16px 14px;width:calc(100% + 32px);height:calc(320px + var(--home-nav));border-radius:0}
 #app.home-bleed .look-hero{margin-left:-16px;margin-right:-16px;width:calc(100% + 32px);height:calc(480px + var(--home-nav));border-radius:0}
 #app.home-bleed .look-hero .lh-chip{top:calc(var(--home-nav) + 8px)}
+/* Look: a shorter video stays pinned; the outfit list scrolls underneath */
+#app.look-pin header.top{position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;z-index:16}
+#app.look-pin .look-hero{position:sticky;top:0;z-index:4;height:calc(360px + var(--home-nav));margin-bottom:0}
+#app.look-pin .look-meta{margin-top:14px}
 .cici-hello .cici-hd{position:absolute;top:calc(var(--home-nav, 8px) + 4px);left:12px;right:12px;z-index:3;margin:0;color:#fff}
 .cici-hello .cici-hd h1,.cici-hello .cici-hd .icb{color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.45)}
 .cici-hello .cici-hd .sub{color:rgba(255,255,255,.9);text-shadow:0 1px 2px rgba(0,0,0,.45)}
 @media (max-width:350px){#app.home-bleed .chome{margin-left:-12px;margin-right:-12px;width:calc(100% + 24px)}#app.home-bleed .you-hero:not(.sm){margin-left:-12px;margin-right:-12px;width:calc(100% + 24px)}#app.home-bleed .cici-hello{margin-left:-12px;margin-right:-12px;width:calc(100% + 24px)}#app.home-bleed .look-hero{margin-left:-12px;margin-right:-12px;width:calc(100% + 24px)}}
+/* Home tab only: the video fills the screen, and the tab bar sits on top of it */
+#app.home-stage{padding-bottom:0}
+#app.home-stage main{padding:0}
+#app.home-stage .chome{margin:0;width:100%;height:100dvh;min-height:calc(440px + var(--home-nav, 60px))}
+#app.home-stage #home-cici::after{height:min(58%, 480px)}
+#app.home-stage #home-cici .home-lower{gap:12px;bottom:124px}
+#home-cici .home-dock{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;width:calc(100% - 36px);margin:4px 0 2px}
+#home-cici .home-chip{color:#7A3058;border:0;border-radius:20px;min-height:84px;padding:12px 8px;box-shadow:0 8px 18px rgba(122,48,88,.1);text-shadow:0 1px 0 rgba(255,255,255,.55);font:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:0}
+#home-cici .home-chip[data-v=mis]{background:rgba(244,184,206,.55)}
+#home-cici .home-chip[data-v=opt]{background:rgba(231,168,188,.55);color:#6E284C}
+#home-cici .home-chip[data-v=next]{background:rgba(255,245,248,.55);color:#C45B86;border:1.5px solid rgba(240,180,200,.75)}
+#home-cici .home-chip .ico{width:22px;height:22px}
+#home-cici .home-chip b,#home-cici .home-chip span{display:block;width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:center}
+#home-cici .home-chip b{font-size:17px;font-weight:800;line-height:1.15}
+#home-cici .home-chip span{font-size:13px;font-weight:700;line-height:1.2}
 .chome .cg::before{display:none}
 #home-cici #home-wear{display:none}
+#home-cici .home-pills{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap;max-width:calc(100% - 24px)}
+#home-cici .home-look{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.82);border-radius:999px;min-height:44px;padding:6px 16px;box-shadow:none;text-shadow:0 1px 2px rgba(0,0,0,.55);font:inherit;font-size:14px;font-weight:650;display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+#home-cici .home-look .wear-acc *{fill:#F4B8CE}
+#home-cici .home-chat{position:relative;background:rgba(247,201,218,.55);color:#7A3058;border:0;border-radius:999px;min-height:44px;padding:6px 16px;box-shadow:0 6px 14px rgba(196,91,134,.16);text-shadow:0 1px 0 rgba(255,255,255,.55);font:inherit;font-size:14px;font-weight:750;display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+#home-cici .home-chat .ico{width:18px;height:18px;stroke:#7A3058}
+#home-cici .home-chat .home-cdot{position:absolute;top:8px;right:8px;width:8px;height:8px;border-radius:50%;background:#E7A8BC;box-shadow:0 0 0 2px #F7C9DA}
+#home-cici #pv-notes .btn.sec{background:#F8D5E2;color:#7A3058;border-color:#E7A8BC}
+#app.home-stage nav.tabs button[aria-current=page]{color:#C45B86}
+#app.home-stage nav.tabs button.tab-cal .fab{background:#E7A8BC;color:#6E284C;box-shadow:0 8px 18px rgba(196,91,134,.28)}
+#app.home-stage nav.tabs button.tab-cal .ico{stroke:#6E284C}
 .sheet{border-radius:28px 28px 0 0;background:#FFF8F6;animation:sheetup .28s cubic-bezier(.2,.9,.3,1.2)}
 .sheet-bg{animation:fadein .2s ease}
 #view{animation:viewin .25s ease}
@@ -486,6 +515,11 @@ button:active:not([disabled]){transform:scale(.94)}
 .bk-modal-glass{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:36px 14px 14px;background:transparent;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.55)}
 .bk-modal-glass .who{font-size:13px;font-weight:700;color:#fff;margin-bottom:6px}
 .bk-modal-glass p,.bk-modal-glass .sub{margin:0 0 4px;color:#fff}
+.home-sheet-vid{position:relative;overflow:hidden;height:280px;border-radius:16px;margin-bottom:12px;background:#1a0a0f}
+.home-sheet-vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 12%;display:block}
+.home-sheet-cap{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:40px 14px 14px;background:transparent;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.55)}
+.home-sheet-cap b{display:block;font-size:18px;line-height:1.25;margin-bottom:2px}
+.home-sheet-cap span{font-size:13px;font-weight:650}
 </style>
 </head>
 <body>
@@ -1732,7 +1766,8 @@ function openSheet(html, label) {
   $("#sheetRoot").innerHTML = `<div class="sheet-bg" data-act="bgclose"><div class="sheet" role="dialog" aria-modal="true" aria-label="${esc(label)}" tabindex="-1">${html}</div></div>`;
   const sh = $(".sheet"); const f = sh.querySelector("button:not([disabled]),input:not([disabled]),textarea,[href]"); (f || sh).focus();
 }
-function closeSheet() { try { p2Pend = null; } catch (e) {} const had = !!$(".sheet"); if (had && PEND && $("[data-act=dobook],#rv-wait")) { track("booking_abandon", { step: "review" }); PEND = null; } $("#sheetRoot").innerHTML = ""; if (!had) return; if (lastFocus && document.body.contains(lastFocus)) lastFocus.focus(); else $("#view").focus(); }
+let homeSheet = null;
+function closeSheet() { homeSheet = null; try { p2Pend = null; } catch (e) {} const had = !!$(".sheet"); if (had && PEND && $("[data-act=dobook],#rv-wait")) { track("booking_abandon", { step: "review" }); PEND = null; } $("#sheetRoot").innerHTML = ""; if (!had) return; if (lastFocus && document.body.contains(lastFocus)) lastFocus.focus(); else $("#view").focus(); }
 const sheetHd = title => `<div class="hd"><h2>${esc(title)}</h2><button class="icb" data-act="close" aria-label="${t("close")}">${ic("x")}</button></div>`;
 let toastT = null, toastUndo = null;
 function toast(msg, undo) {
@@ -2367,7 +2402,10 @@ function heroScene() {
   const outfitVidSrc = !calm ? (CHAR_VIDS.find(v => v.id === (OUTFIT_VID[ST.wear] || "v1")) || CHAR_VIDS[0]).src : null;
   const outfitImgSrc = !calm ? (OUTFIT_IMG[ST.wear] || OUTFIT_IMG.o1) : null;
   const ciciMedia = outfitVidSrc ? `<video src="${esc(outfitVidSrc)}" muted loop playsinline autoplay></video>` : outfitImgSrc ? `<img src="${esc(outfitImgSrc)}" alt="${esc(alt)}" loading="eager">` : cut(pose, { alt, eager: 1, loop: !calm });
-  return `<section class="chome" id="home-cici" aria-label="${esc(ciciNm())}" data-pose="${pose}" data-greet="${calm ? "neutral" : h < 12 ? "morning" : h < 18 ? "afternoon" : "evening"}">${ciciMedia}<p class="home-date">${esc(homeDate())}</p><div class="cpic${P2() && !calm ? " p2sk" : ""}"${calm ? "" : p2SkinAttr(null, 1)}></div><div class="home-lower"><h1 class="cg">${esc(greet)}</h1>${notesCard()}${homeLevelBar()}</div></section>`;
+  const lookBtn = `<button type="button" class="home-look" id="home-look" data-act="youpage" data-v="look" aria-label="${esc(t("wardrobe") + (wn ? ", " + wn : ""))}">${outfitBadge(ST.wear, "pill")}<span>${esc(wn ? L3("Look", "Tủ đồ", "스타일") + " · " + wn : t("wardrobe"))}</span></button>`;
+  const chatDot = CH.cici && CH.cici.unread;
+  const chatBtn = `<button type="button" class="home-chat" id="home-chat" data-act="tab" data-v="cici" aria-label="${esc(t("ciciAria") + (chatDot ? ", " + t("newReply") : ""))}">${ic("cici")}<span>${esc(t("cici"))}</span>${chatDot ? '<span class="home-cdot" aria-hidden="true"></span>' : ""}</button>`;
+  return `<section class="chome" id="home-cici" aria-label="${esc(ciciNm())}" data-pose="${pose}" data-greet="${calm ? "neutral" : h < 12 ? "morning" : h < 18 ? "afternoon" : "evening"}">${ciciMedia}<p class="home-date">${esc(homeDate())}</p><div class="cpic${P2() && !calm ? " p2sk" : ""}"${calm ? "" : p2SkinAttr(null, 1)}></div><div class="home-lower"><div class="home-pills">${lookBtn}${chatBtn}</div><h1 class="cg">${esc(greet)}</h1>${notesCard()}${homeDockHtml()}${homeLevelBar()}</div></section>`;
 }
 /* MVP-H2: greeting by the member's home time zone (KST in the KR market) */
 function homeNow() { const tz = ME && ME.tz || (MARKET === "kr" ? "Asia/Seoul" : "Asia/Saigon"); return loc(PV.now(), tz); }
@@ -2419,21 +2457,57 @@ function visitToday() {
   if (ME.days && ME.days[dk] === "v") return true;
   return Object.values(ME.att || {}).some(a => a && !a.reversed && (a.day || dayKey(ME, a.t)) === dk);
 }
-function optionalCard() {
-  /* Rest only when today has no visit and stretch is still open, or after it is already done. Breathe and walk stay listed. None of these enter the 0/3 count or the shop-coin ledger. */
+function optKeys() {
+  /* Rest only when today has no visit and stretch is still open, or after it is already done. Breathe and walk stay listed. */
+  const keys = [];
+  if (ST.miss.rest || (!ST.miss.stretch && !visitToday())) keys.push("rest");
+  keys.push("breathe", "walk");
+  return keys;
+}
+function optionalCard(bare) {
+  /* None of these enter the 0/3 count or the shop-coin ledger. */
   const row = (k, label, why) => `<div class="mis${ST.miss[k] ? " done" : ""}" id="opt-${k}"><span class="ck" aria-hidden="true">${ST.miss[k] ? ic("check", "s") : ""}</span><span class="grow"><span class="mt">${esc(label)}</span><span class="vh">${ST.miss[k] ? ", " + tr("done") : ""}</span><br><span class="sub sm">+${esc(fmtPts(10))} · ${esc(why)}</span></span>${ST.miss[k] ? "" : `<button class="btn sec" data-act="${k}">${tr("Start")}</button>`}</div>`;
-  const rows = [];
-  if (ST.miss.rest || (!ST.miss.stretch && !visitToday())) rows.push(row("rest", t("mRest"), t("optRestWhy")));
-  rows.push(row("breathe", t("mBreathe"), t("optWhy")));
-  rows.push(row("walk", t("mWalk"), t("optWhy")));
-  return `<h2 id="home-opt-h">${t("optMissions")}</h2><div class="card" id="home-opt">${rows.join("")}</div>`;
+  const label = { rest: t("mRest"), breathe: t("mBreathe"), walk: t("mWalk") };
+  const why = { rest: t("optRestWhy"), breathe: t("optWhy"), walk: t("optWhy") };
+  const body = `<div class="card" id="home-opt">${optKeys().map(k => row(k, label[k], why[k])).join("")}</div>`;
+  return bare ? body : `<h2 id="home-opt-h">${t("optMissions")}</h2>${body}`;
+}
+function nextClassCard() {
+  const up = upcoming();
+  return `<div class="card" role="list" id="home-next">${up.length ? upRow(up[0]) + `<div class="row" style="justify-content:flex-end"><button class="link" data-act="mybk" data-from="home">${esc(t("allBookings", { n: up.length }))}</button></div>` : nEmpty(esc(t("nothingUp")), "idle") + `<button class="btn full" data-act="go" data-v="cici:book">${t("chipBook")}</button>`}</div>`;
+}
+function homeDockHtml() {
+  const done = ["attend", "newplace", "stretch"].filter(k => ST.miss[k]).length;
+  const keys = optKeys(), od = keys.filter(k => ST.miss[k]).length;
+  const nx = upcoming()[0];
+  const nxTime = nx ? fTime(nx.m) : "—";
+  const nxName = nx ? N(svcOf(nx.store, nx.svc).n) : L3("Book", "Đặt lịch", "예약");
+  const chip = (kind, icon, strong, sub, label) => `<button type="button" class="home-chip" data-act="homedock" data-v="${kind}" aria-label="${esc(label)}">${ic(icon)}<b>${esc(strong)}</b><span>${esc(sub)}</span></button>`;
+  return `<div class="home-dock" role="group">${chip("mis", "check", done + "/3", L3("Today", "Hôm nay", "오늘"), t("missions") + ", " + done + "/3")}${chip("opt", "star", od + "/" + keys.length, L3("Optional", "Tùy chọn", "선택"), t("optMissions") + ", " + od + "/" + keys.length)}${chip("next", "cal", nxTime, nxName, t("nextClass") + (nx ? ", " + nxName + ", " + nxTime : ""))}</div>`;
+}
+function homeSheetVid(title, sub) {
+  return `<div class="home-sheet-vid"><video src="${esc(outfitVidTop())}" muted loop playsinline autoplay></video><div class="home-sheet-cap"><b>${esc(title)}</b><span>${esc(sub)}</span></div></div>`;
+}
+function openHomeSheet(kind) {
+  if (kind === "mis") {
+    const done = ["attend", "newplace", "stretch"].filter(k => ST.miss[k]).length;
+    homeSheet = "mis";
+    openSheet(sheetHd(t("missions")) + homeSheetVid(done + " / 3", t("missions")) + missionsCard(), t("missions"));
+  } else if (kind === "opt") {
+    const keys = optKeys(), od = keys.filter(k => ST.miss[k]).length;
+    homeSheet = "opt";
+    openSheet(sheetHd(t("optMissions")) + homeSheetVid(od + " / " + keys.length, t("optMissions")) + optionalCard(true), t("optMissions"));
+  } else if (kind === "next") {
+    const nx = upcoming()[0];
+    const title = nx ? N(svcOf(nx.store, nx.svc).n) : t("nothingUp");
+    const sub = nx ? fTime(nx.m) + " · " + S[nx.store].name : t("chipBook");
+    homeSheet = "next";
+    openSheet(sheetHd(t("nextClass")) + homeSheetVid(title, sub) + nextClassCard(), t("nextClass"));
+  }
 }
 function vHome() {
-  /* MVP-H1 order: Cici + greeting, level bar, 2–3 missions, optional self-care, Next class card (+ "All bookings"). Allowed extras: the one-line migration banner (A3) and the header bell. */
-  const up = upcoming(); track("home_open");
-  return heroScene() + (P2() ? p2Room() : "") +
-    `<h2 id="home-mis-h">${t("missions")}</h2>${missionsCard()}${optionalCard()}` +
-    `<h2>${t("nextClass")}</h2><div class="card" role="list" id="home-next">${up.length ? upRow(up[0]) + `<div class="row" style="justify-content:flex-end"><button class="link" data-act="mybk" data-from="home">${esc(t("allBookings", { n: up.length }))}</button></div>` : nEmpty(esc(t("nothingUp")), "idle") + `<button class="btn full" data-act="go" data-v="cici:book">${t("chipBook")}</button>`}</div>`;
+  upcoming(); track("home_open");
+  return heroScene() + (P2() ? p2Room() : "");
 }
 function chatUI(cid, placeholder, above) {
   const c = CH[cid], g = gated();
@@ -2648,7 +2722,7 @@ function vSettings() {
   h += `<h2>${L3("About","Giới thiệu","정보")}</h2><p class="sub sm" id="demo-safety"><b>${L3("Demo safety: prototype only.","An toàn bản demo: chỉ là bản thử nghiệm.","데모 안전 기능: 프로토타입 전용.")}</b> ${L3("Cici's safety replies follow a fixed, tested list and may miss new wording. The 'Need help?' link is always under the chat. The real app will use a stronger check.","Các câu trả lời an toàn của Cici dựa trên một danh sách cố định đã kiểm thử và có thể bỏ sót cách diễn đạt mới. Liên kết 'Cần hỗ trợ?' luôn ở dưới khung chat. Ứng dụng thật sẽ dùng cách kiểm tra mạnh hơn.",CICI_KO + "의 안전 답변은 테스트된 고정 목록을 따르며 새로운 표현은 놓칠 수 있어요. '도움이 필요하세요?' 링크는 항상 대화 아래에 있어요. 실제 앱은 더 강력한 검사를 사용할 거예요.")}</p>`;
   return h;
 }
-function syncHomeBleed() { const app = $("#app"); if (app) app.classList.toggle("home-bleed", ((ST.tab === "home" || ST.tab === "you" || (ST.tab === "cici" && CH.cici && !CH.cici.msgs.length)) && !ST.page && !ST.store) || (ST.page === "look" && !ST.store)); }
+function syncHomeBleed() { const app = $("#app"); if (!app) return; app.classList.toggle("home-bleed", ((ST.tab === "home" || ST.tab === "you" || (ST.tab === "cici" && CH.cici && !CH.cici.msgs.length)) && !ST.page && !ST.store) || (ST.page === "look" && !ST.store)); app.classList.toggle("home-stage", ST.tab === "home" && !ST.page && !ST.store); app.classList.toggle("look-pin", ST.page === "look" && !ST.store); }
 function renderView() { if (ST.page === "p2char" && !P2()) ST.page = null; if (!FLAGS.quest) { if (QUEST_RE.test(ST.page || "")) ST.page = null; if (QUEST_RE.test(ST.tab || "")) ST.tab = "home"; if (QUEST_RE.test(ST.bkFrom || "")) ST.bkFrom = "home"; } if (ST.tab === "book" || ST.tab === "ask") ST.tab = "cici"; /* NT-7: old tabs land on Cici */ syncHomeBleed(); $("#view").classList.toggle("cici-v", ST.tab === "cici" && !ST.page && !ST.store); $("#view").innerHTML = ST.page === "bookings" ? vBookings() : ST.page === "notif" ? vNotif() : ST.page === "nset" ? vNSet() : ST.page === "wallet" ? vWallet() : ST.page === "vouchers" ? vVouchers() : ST.page === "settings" ? vSettings() : ST.page === "points" ? pointsBlock() + storeAppBtn() : ST.page === "look" ? vLook() : ST.page === "p2char" && P2() ? p2CharPage() : ST.page === "shop" ? shopPage() : ST.page === "auth" ? authPage() : ST.page === "onboard" ? onboardPage() : ST.page === "profile-edit" ? profileEditPage() : ST.store ? vStore(ST.store) : ({ home: vHome, discover: vDiscover, look: vLook, cici: vCici, you: vYou }[ST.tab] || vHome)(); }
 /* MVP-L1/L7: the unlock animation plays once, on the next normal Home view (deferred while a crisis/urgent turn is in force, A6) */
 function maybeUnlock() {
@@ -3204,7 +3278,8 @@ document.addEventListener("click", e => {
   switch (a) {
     case "close": clearInterval(stretchT); closeSheet(); break;
     case "tab": go("tab:" + d.v); break;
-    case "gotasks": closeSheet(); setTab("home"); render(); { const m = $("#home-mis-h") || $("#home-mis"); if (m) m.scrollIntoView({ block: "start" }); const v = $("#view"); if (v) v.focus({ preventScroll: true }); } break;
+    case "gotasks": closeSheet(); setTab("home"); render(); openHomeSheet("mis"); break;
+    case "homedock": openHomeSheet(d.v); break;
     case "go": go(d.v); break;
     case "mybk": openBookings(null, null, d.from || null); break;
     case "bkseg": ST.bkSeg = d.v; ST.bkHi = null; renderView(); { const f = $(`[data-act="bkseg"][data-v="${d.v}"]`); if (f) f.focus(); } break;
@@ -3242,8 +3317,8 @@ document.addEventListener("click", e => {
       toast(unequip ? it.icon+" "+L3("Removed.","Đã bỏ.","해제됐어요.") : it.icon+" "+shopItemNm(it)+" "+L3("equipped!","đã đeo!","착용!"));
       applyEquipped(); render(); break; }
     case "onboard-done": ST.firstRun = false; try { localStorage.setItem("cici.ob","1"); } catch(e){} ST.page = null; ST.shopCoins += 50; showGainPill(0, 50); celebrate(); render(); toast(L3("Welcome! +50 🪙","Chào mừng! +50 🪙","환영해요! +50 🪙")); break;
-    case "attend-demo": { const b = B.find(bk => bk.status === "confirmed"); if (b) { attend(b); } else { ST.miss.attend = true; shopGain(20); celebrate(); render(); toast(L3("Attended! +20 🪙","Đã điểm danh! +20 🪙","출석 완료! +20 🪙")); } break; }
-    case "newplace-demo": ST.miss.newplace = true; shopGain(30); celebrate(); render(); toast(L3("New place visited! +30 🪙","Thử nơi mới! +30 🪙","새로운 곳 방문! +30 🪙")); break;
+    case "attend-demo": { const b = B.find(bk => bk.status === "confirmed"); if (b) { attend(b); } else { ST.miss.attend = true; shopGain(20); celebrate(); render(); toast(L3("Attended! +20 🪙","Đã điểm danh! +20 🪙","출석 완료! +20 🪙")); if (homeSheet === "mis") openHomeSheet("mis"); } break; }
+    case "newplace-demo": ST.miss.newplace = true; shopGain(30); celebrate(); render(); toast(L3("New place visited! +30 🪙","Thử nơi mới! +30 🪙","새로운 곳 방문! +30 🪙")); if (homeSheet === "mis") openHomeSheet("mis"); break;
     case "edit-profile": ST.editNameVal = ST.profileName || L3("Mina","Mina","미나"); ST.page = "profile-edit"; render(); window.scrollTo(0,0); break;
     case "save-profile": { const v = ($("#fEditName")||{}).value||""; const vt = v.trim(); if (!vt) { toast(L3("Name can't be empty.","Tên không được bỏ trống.","이름을 입력해 주세요.")); break; } ST.profileName = vt; ST.editNameVal = vt; ST.page = null; toast(L3("Saved.","Đã lưu.","저장됐어요.")); render(); break; }
     case "back": if (ST.page === "bookings") { bookingsBack(); break; } if (ST.page) { ST.page = ST.page === "nset" && ST.fromFeed ? "notif" : null; ST.fromFeed = false; render(); $("#view").focus(); break; } ST.store = null; render(); window.scrollTo(0, 0); $("#view").focus(); break;
