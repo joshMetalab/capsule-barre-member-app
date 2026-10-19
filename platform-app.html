@@ -101,9 +101,10 @@ nav.tabs button[aria-current=page] .ico{stroke-width:2.2}
 .up{display:flex;gap:10px;align-items:flex-start;padding:12px 0;border-top:1px solid var(--line)}
 .up:first-child{border-top:0;padding-top:0}
 .up .acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
-.mis{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--line)}
+.mis{display:flex;align-items:center;gap:8px;padding:8px 0;border-top:1px solid var(--line)}
 .mis:first-of-type{border-top:0}
-.mis .ck{width:28px;height:28px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;flex:none}
+.mis .ck{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;flex:none}
+.mis .ck .ico{width:11px;height:11px}
 .mis.done .ck{background:var(--mint);border-color:var(--mint)}
 .mis.done .mt{text-decoration:line-through;color:var(--sub)}
 .bar{height:10px;border-radius:5px;background:#EADFD4;overflow:hidden}
@@ -221,14 +222,22 @@ html{min-height:100%;background:#F6D9E2}
 html:lang(ko) body{word-break:keep-all;overflow-wrap:anywhere}
 .cut-note{width:72px;height:auto;flex:none}
 /* polish: Cici tab like a chat app (input pinned above the tab bar), store action row */
-#view.cici-v{display:flex;flex-direction:column;min-height:calc(100dvh - 60px - 66px - env(safe-area-inset-bottom));padding-bottom:0}
-#app:has(#view.cici-v){padding-bottom:calc(66px + env(safe-area-inset-bottom))}
-#view.cici-v .dock{margin-top:auto;position:sticky;bottom:calc(66px + env(safe-area-inset-bottom));z-index:4;margin-left:-16px;margin-right:-16px;padding:8px 16px 0;background:transparent;box-shadow:none;-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
+#view.cici-v{display:flex;flex-direction:column;min-height:calc(100dvh - 60px - 120px - env(safe-area-inset-bottom));padding-bottom:0}
+#app:has(#view.cici-v){padding-bottom:calc(120px + env(safe-area-inset-bottom))}
+#view.cici-v .dock{margin-top:auto;position:sticky;bottom:calc(120px + env(safe-area-inset-bottom));z-index:4;margin-left:-16px;margin-right:-16px;padding:8px 16px 0;background:transparent;box-shadow:none;-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
 #view.cici-v .dock .helplink{color:#3A2E31;background:rgba(255,253,249,.92);border-radius:999px}
 @media (max-width:350px){#view.cici-v .dock{margin-left:-12px;margin-right:-12px;padding-left:12px;padding-right:12px}}
 .nhero{position:relative;display:flex;flex-direction:column;align-items:center;gap:10px;margin:4px 0 14px;text-align:center}
 .nhero-cut{width:auto;height:200px;max-width:60%;object-fit:contain}
 .nhero .msg.n{max-width:100%;text-align:center;font-size:16px;line-height:1.45;padding:12px 16px}
+.cici-hello{display:block;height:320px;margin:-4px -16px 14px;overflow:hidden;border-radius:0 0 20px 20px;background:#1a0a0f}
+.cici-hello-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 12%}
+.cici-hello-foot{position:absolute;left:0;right:0;bottom:0;z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px;padding:24px 12px 14px;background:transparent}
+.cici-hello-msg{margin:0;max-width:100%;color:#fff;text-align:center;font-size:16px;line-height:1.4;text-shadow:0 1px 2px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.55)}
+.cici-hello .chips{justify-content:center;background:transparent}
+.cici-hello .chip{background:transparent;color:#fff;border-color:rgba(255,255,255,.82);box-shadow:none;text-shadow:0 1px 2px rgba(0,0,0,.55)}
+#cici-hd-av video{width:100%;height:100%;object-fit:cover;object-position:50% 12%;display:block}
+@media (max-width:350px){.cici-hello{margin-left:-12px;margin-right:-12px}}
 .chip.sug{background:#FFF8F9;border:1.5px dashed #E9B3BF;color:#8E3346;font-size:14px;box-shadow:none}
 .sacts{display:flex;flex-direction:column;gap:10px}.sact3{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:8px}
 .btn.sact{flex-direction:column;gap:2px;min-height:60px;padding:8px 4px;border-radius:16px;font-size:13px;white-space:nowrap;box-shadow:none;border-color:#F0D3D9;background:#fff;color:var(--ink)}
@@ -245,7 +254,7 @@ html:lang(ko) body{word-break:keep-all;overflow-wrap:anywhere}
 
 @media (prefers-reduced-motion: reduce){#wintoast{transition:none;transform:translate(-50%,0)}}
 /* MVP character-first Home + unlock */
-.chome{position:relative;display:block;overflow:hidden;height:380px;padding:0;text-align:center}
+.chome{position:relative;display:block;overflow:hidden;height:440px;padding:0;text-align:center}
 #home-cici>video,#home-cici>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0%;z-index:0}
 #home-cici::after{content:"";position:absolute;inset:auto 0 0 0;height:140px;background:linear-gradient(to top,rgba(43,35,38,.45),transparent);z-index:1;pointer-events:none}
 .chome .cpic{position:absolute;top:12px;right:12px;width:52px;height:66px;z-index:3}
@@ -274,6 +283,29 @@ body:has(#view.cici-v) .toast{bottom:calc(196px + env(safe-area-inset-bottom))} 
 .nrow .msg.n::after{left:14px;bottom:-5px}
 .nhero .msg.n::after{left:50%;top:-6px;transform:translateX(-50%)}
 .chome .cg{position:absolute;bottom:72px;left:50%;transform:translateX(-50%);margin:0;padding:10px 18px;background:rgba(255,255,255,.12);border-radius:28px;box-shadow:none;white-space:nowrap;z-index:3;color:#fff;backdrop-filter:none}
+#home-cici .home-lower{position:absolute;left:0;right:0;bottom:0;z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px}
+#home-cici .home-lower .cg{position:static;left:auto;bottom:auto;transform:none}
+#home-cici .home-lower .lvlbar{position:static;width:100%}
+#pv-notes{margin:12px 0;gap:8px}
+#home-cici #pv-notes,.you-hero #pv-notes{width:calc(100% - 32px);margin:0 16px;padding:0;background:transparent;border:0;box-shadow:none;border-radius:0;color:#fff;text-align:left;text-shadow:0 1px 2px rgba(0,0,0,.9),0 0 10px rgba(0,0,0,.65)}
+#home-cici #pv-notes .sm,#home-cici #pv-notes b,.you-hero #pv-notes .sm,.you-hero #pv-notes b{color:#fff}
+/* Home only: the hero video runs under the top bar, and that bar has no fill */
+#app.home-bleed{--home-nav:60px}
+#app.home-bleed header.top{position:absolute;top:0;left:0;right:0;background:transparent;box-shadow:none;color:#fff}
+#app.home-bleed header.top .brand span.t,#app.home-bleed header.top .icb{color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+#app.home-bleed header.top .icb:hover{background:rgba(255,255,255,.18)}
+#app.home-bleed header.top .brand .nm{background:rgba(255,255,255,.22)}
+#app.home-bleed main{padding-top:0}
+#app.home-bleed .chome{margin-left:-16px;margin-right:-16px;width:calc(100% + 32px);height:calc(440px + var(--home-nav))}
+#app.home-bleed .home-date{position:absolute;top:calc(var(--home-nav) + 8px);left:16px;z-index:3;margin:0;color:#fff;font-weight:750;font-size:15px;line-height:1.2;padding:5px 12px;border-radius:999px;background:rgba(43,35,38,.42);text-shadow:0 1px 2px rgba(0,0,0,.45)}
+#app.home-bleed .chome .cpic{top:calc(var(--home-nav) + 8px)}
+#app.home-bleed .you-hero:not(.sm){margin-left:-16px;margin-right:-16px;width:calc(100% + 32px);height:calc(220px + var(--home-nav));border-radius:0}
+#app.home-bleed .you-hero:not(.sm) .you-hero-vid{position:absolute;inset:0;width:100%;height:100%}
+#app.home-bleed .cici-hello{margin:0 -16px 14px;width:calc(100% + 32px);height:calc(320px + var(--home-nav));border-radius:0}
+.cici-hello .cici-hd{position:absolute;top:calc(var(--home-nav, 8px) + 4px);left:12px;right:12px;z-index:3;margin:0;color:#fff}
+.cici-hello .cici-hd h1,.cici-hello .cici-hd .icb{color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.45)}
+.cici-hello .cici-hd .sub{color:rgba(255,255,255,.9);text-shadow:0 1px 2px rgba(0,0,0,.45)}
+@media (max-width:350px){#app.home-bleed .chome{margin-left:-12px;margin-right:-12px;width:calc(100% + 24px)}#app.home-bleed .you-hero:not(.sm){margin-left:-12px;margin-right:-12px;width:calc(100% + 24px)}#app.home-bleed .cici-hello{margin-left:-12px;margin-right:-12px;width:calc(100% + 24px)}}
 .chome .cg::before{display:none}
 #home-cici #home-wear{display:none}
 .sheet{border-radius:28px 28px 0 0;background:#FFF8F6;animation:sheetup .28s cubic-bezier(.2,.9,.3,1.2)}
@@ -283,6 +315,16 @@ nav.tabs{z-index:15;border-top:0;background:#FFF1F4;box-shadow:0 -12px 28px rgba
 nav.tabs button{border-radius:18px;min-height:52px}
 nav.tabs button[aria-current=page]{background:#fff;color:var(--rasp);box-shadow:0 6px 16px rgba(176,74,94,.14)}
 nav.tabs button[aria-current=page] svg{transform:translateY(-1px) scale(1.08);transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+/* Center schedule button: raised calendar, sits between Discover and Cici */
+#app{padding-bottom:124px}
+nav.tabs{overflow:visible}
+nav.tabs button.tab-cal{flex:0 0 72px;width:72px;min-height:64px;margin:-50px 0 0;padding:0;background:transparent;box-shadow:none;border-radius:50%;color:#fff}
+nav.tabs button.tab-cal[aria-current=page]{background:transparent;box-shadow:none;color:#fff}
+nav.tabs button.tab-cal[aria-current=page] svg{transform:none}
+nav.tabs button.tab-cal .fab{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;background:#B04A5E;color:#fff;border:3px solid #fff;box-shadow:0 8px 18px rgba(176,74,94,.35)}
+nav.tabs button.tab-cal .ico{width:26px;height:26px;stroke:#fff;stroke-width:1.8}
+nav.tabs button.tab-cal:focus-visible .fab{outline:3px solid #1F5FAD;outline-offset:3px}
+@media (max-width:350px){nav.tabs button.tab-cal{flex-basis:60px;width:60px;margin-top:-28px}nav.tabs button.tab-cal .fab{width:56px;height:56px}}
 button{transition:transform .15s cubic-bezier(.3,1.6,.5,1)}
 button:active:not([disabled]){transform:scale(.94)}
 .nempty{display:flex;align-items:center;gap:12px}.nempty img{width:72px;height:96px;object-fit:cover;object-position:50% 15%;flex:none}
@@ -431,7 +473,9 @@ button:active:not([disabled]){transform:scale(.94)}
 .you-hero{position:relative;width:100%;overflow:hidden;border-radius:0 0 20px 20px;background:#1a0a0f}
 .you-hero-vid{width:100%;height:220px;object-fit:cover;display:block}
 .you-hero.sm .you-hero-vid{height:140px}
+.you-hero-foot{position:absolute;left:0;right:0;bottom:0;z-index:2;display:flex;flex-direction:column;gap:6px}
 .you-hero-info{position:absolute;bottom:0;left:0;right:0;padding:12px 16px 14px;background:linear-gradient(to top,rgba(0,0,0,.55) 0%,transparent 100%);color:#fff}
+.you-hero-foot .you-hero-info{position:static}
 .you-hero-name{font-size:18px;font-weight:700;line-height:1.2}
 .you-hero-lvl{font-size:13px;opacity:.85;margin-top:2px}
 /* bk-modal — booking confirmation with video + glass text layer */
@@ -2288,9 +2332,12 @@ function header() {
   <div class="tr">${hud}<button class="icb" data-act="lang" aria-label="${t("language")}: ${L.toUpperCase()}">${ic("globe", "s")}${L.toUpperCase()}</button></div>`;
 }
 function tabs() {
-  /* 4 tabs, Cici in position 3 (nari-tab §1 IDs kept); the Cici tab shows a dot (never a number) for an unread Cici reply */
-  return [["home", "home"], ["discover", "compass"], ["cici", "cici"], ["you", "user"]].map(([k, i]) => { const dot = k === "cici" && CH.cici.unread && !(ST.tab === "cici" && !ST.page && !ST.store);
-    return `<button data-act="tab" data-v="${k}" ${ST.tab === k && !ST.store && !ST.page ? 'aria-current="page"' : ""}${k === "cici" ? ` aria-label="${esc(t("ciciAria"))}${dot ? ", " + esc(t("newReply")) : ""}"` : ""}>${ic(i)}<span>${t(k)}</span>${dot ? '<span class="tdot" aria-hidden="true"></span>' : ""}</button>`; }).join("");
+  /* Home, Discover, schedule, Cici, You. The center control opens My bookings (schedule + book). */
+  const item = (k, i) => { const dot = k === "cici" && CH.cici.unread && !(ST.tab === "cici" && !ST.page && !ST.store);
+    return `<button data-act="tab" data-v="${k}" ${ST.tab === k && !ST.store && !ST.page ? 'aria-current="page"' : ""}${k === "cici" ? ` aria-label="${esc(t("ciciAria"))}${dot ? ", " + esc(t("newReply")) : ""}"` : ""}>${ic(i)}<span>${t(k)}</span>${dot ? '<span class="tdot" aria-hidden="true"></span>' : ""}</button>`; };
+  const from = ST.store ? "store:" + ST.store : (ST.page && ST.page !== "bookings" ? "page:" + ST.page : (["home", "discover", "cici", "you"].includes(ST.tab) ? ST.tab : "home"));
+  const cal = `<button class="tab-cal" data-act="mybk" data-from="${esc(from)}" aria-label="${esc(t("book"))}"${ST.page === "bookings" ? ' aria-current="page"' : ""}><span class="fab">${ic("cal")}</span></button>`;
+  return item("home", "home") + item("discover", "compass") + cal + item("cici", "cici") + item("you", "user");
 }
 /* ===== MVP character-first Home (MVP-H1..H8) ===== */
 const outfitIdx = id => { const n = +String(id || "").replace(/^o/, ""); return n >= 1 && n <= 5 ? n : 0; };
@@ -2315,10 +2362,17 @@ function heroScene() {
   const outfitVidSrc = !calm ? (CHAR_VIDS.find(v => v.id === (OUTFIT_VID[ST.wear] || "v1")) || CHAR_VIDS[0]).src : null;
   const outfitImgSrc = !calm ? (OUTFIT_IMG[ST.wear] || OUTFIT_IMG.o1) : null;
   const ciciMedia = outfitVidSrc ? `<video src="${esc(outfitVidSrc)}" muted loop playsinline autoplay></video>` : outfitImgSrc ? `<img src="${esc(outfitImgSrc)}" alt="${esc(alt)}" loading="eager">` : cut(pose, { alt, eager: 1, loop: !calm });
-  return `<section class="chome" id="home-cici" aria-label="${esc(ciciNm())}" data-pose="${pose}" data-greet="${calm ? "neutral" : h < 12 ? "morning" : h < 18 ? "afternoon" : "evening"}">${ciciMedia}<div class="cpic${P2() && !calm ? " p2sk" : ""}"${calm ? "" : p2SkinAttr(null, 1)}></div><h1 class="cg">${esc(greet)}</h1>${homeLevelBar()}</section>`;
+  return `<section class="chome" id="home-cici" aria-label="${esc(ciciNm())}" data-pose="${pose}" data-greet="${calm ? "neutral" : h < 12 ? "morning" : h < 18 ? "afternoon" : "evening"}">${ciciMedia}<p class="home-date">${esc(homeDate())}</p><div class="cpic${P2() && !calm ? " p2sk" : ""}"${calm ? "" : p2SkinAttr(null, 1)}></div><div class="home-lower"><h1 class="cg">${esc(greet)}</h1>${notesCard()}${homeLevelBar()}</div></section>`;
 }
 /* MVP-H2: greeting by the member's home time zone (KST in the KR market) */
-function homeHour() { try { const tz = ME && ME.tz || (MARKET === "kr" ? "Asia/Seoul" : "Asia/Saigon"); return loc(PV.now(), tz).getUTCHours(); } catch (e) { return new Date().getHours(); } }
+function homeNow() { const tz = ME && ME.tz || (MARKET === "kr" ? "Asia/Seoul" : "Asia/Saigon"); return loc(PV.now(), tz); }
+function homeHour() { try { return homeNow().getUTCHours(); } catch (e) { return new Date().getHours(); } }
+function homeDate() {
+  try {
+    const d = homeNow();
+    return new Intl.DateTimeFormat(LOC[L] || "en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate())));
+  } catch (e) { return ""; }
+}
 function homeLevelBar() {
   const m = ME, lv = lvlOf(m), lf = life(m), nx = LVL[lv], pct = nx ? Math.round(100 * (lf - LVL[lv - 1]) / (nx - LVL[lv - 1])) : 100;
   return `<div class="card lvlbar" id="home-lvl"><div class="row wrap" style="gap:6px"><b class="grow" id="home-lvl-t">${esc(pvT("level", { n: lv, name: lvlName(lv) }))}</b><span class="sub sm" id="home-lvl-n">${nx ? esc(pvT("nextLevel", { n: fmtN(nx - lf), m: lv + 1 })) : esc(lvlName(5))}</span></div><div class="bar" role="progressbar" aria-label="${esc(pvT("level", { n: lv, name: lvlName(lv) }))}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}"><i style="width:${pct}%"></i></div></div>`;
@@ -2372,8 +2426,8 @@ function optionalCard() {
 function vHome() {
   /* MVP-H1 order: Cici + greeting, level bar, 2–3 missions, optional self-care, Next class card (+ "All bookings"). Allowed extras: the one-line migration banner (A3) and the header bell. */
   const up = upcoming(); track("home_open");
-  return heroScene() + notesCard() + (P2() ? p2Room() : "") +
-    `<h2>${t("missions")}</h2>${missionsCard()}${optionalCard()}` +
+  return heroScene() + (P2() ? p2Room() : "") +
+    `<h2 id="home-mis-h">${t("missions")}</h2>${missionsCard()}${optionalCard()}` +
     `<h2>${t("nextClass")}</h2><div class="card" role="list" id="home-next">${up.length ? upRow(up[0]) + `<div class="row" style="justify-content:flex-end"><button class="link" data-act="mybk" data-from="home">${esc(t("allBookings", { n: up.length }))}</button></div>` : nEmpty(esc(t("nothingUp")), "idle") + `<button class="btn full" data-act="go" data-v="cici:book">${t("chipBook")}</button>`}</div>`;
 }
 function chatUI(cid, placeholder, above) {
@@ -2484,8 +2538,8 @@ function vYou() {
   const m = ME, lv = lvlOf(m), pts = fmtPts(life(m));
   const uname = ST.profileName || L3("Mina","Mina","미나");
   const uinit = (uname||"").split(/\s+/).filter(Boolean).map(w=>w[0].toUpperCase()).slice(0,2).join("")||"?";
-  const youHero = `<div class="you-hero"><video class="you-hero-vid" src="${outfitVidTop()}" muted loop playsinline autoplay></video><div class="you-hero-info"><div class="you-hero-name">${esc(uname)}</div><div class="you-hero-lvl">Lv ${lv} · ${esc(lvlName(lv))}</div></div></div>`;
-  let h = youHero + notesCard() + `<section class="card row" id="you-prof"><span class="initav${ST.shopEquipped.frame?" "+ST.shopEquipped.frame:""}" aria-hidden="true">${esc(uinit)}</span><div class="grow"><h1 style="margin:0">${esc(uname)}</h1><div class="sub sm" id="you-lvl">${esc(pvT("level", { n: lv, name: lvlName(lv) }))}</div><button class="ptsbtn sm" id="you-pts" data-act="youpage" data-v="points" aria-label="${esc(pts + " · " + pvT("streak", { n: m.streak }) + ", " + L3("points details", "chi tiết điểm", "포인트 자세히"))}"><span><b>${esc(pts)}</b> · ${esc(pvT("streak", { n: m.streak }))}</span>${ic("chev")}</button></div></section>`;
+  const youHero = `<div class="you-hero"><video class="you-hero-vid" src="${outfitVidTop()}" muted loop playsinline autoplay></video><div class="you-hero-foot">${notesCard()}<div class="you-hero-info"><div class="you-hero-name">${esc(uname)}</div><div class="you-hero-lvl">Lv ${lv} · ${esc(lvlName(lv))}</div></div></div></div>`;
+  let h = youHero + `<section class="card row" id="you-prof"><span class="initav${ST.shopEquipped.frame?" "+ST.shopEquipped.frame:""}" aria-hidden="true">${esc(uinit)}</span><div class="grow"><h1 style="margin:0">${esc(uname)}</h1><div class="sub sm" id="you-lvl">${esc(pvT("level", { n: lv, name: lvlName(lv) }))}</div><button class="ptsbtn sm" id="you-pts" data-act="youpage" data-v="points" aria-label="${esc(pts + " · " + pvT("streak", { n: m.streak }) + ", " + L3("points details", "chi tiết điểm", "포인트 자세히"))}"><span><b>${esc(pts)}</b> · ${esc(pvT("streak", { n: m.streak }))}</span>${ic("chev")}</button></div></section>`;
   h += `<button class="link" style="font-size:14px;margin:0 0 12px" data-act="edit-profile">${esc(L3("Edit name ›","Sửa tên ›","이름 수정 ›"))}</button>`;
   const tiles = [["wallet", "wallet", t("wallet"), L3(`${youWallet()} items`, `${youWallet()} mục`, `${youWallet()}개`)], ["bookings", "cal", t("bkTitle"), L3(`${bkUpcoming().length} upcoming`, `${bkUpcoming().length} sắp tới`, `${bkUpcoming().length}개 예정`)], ["look", "shirt", t("wardrobe"), wearNm() || "—"]];
     if (PV.flag) tiles.splice(2, 0, ["vouchers", "star", L3("Vouchers", "Ưu đãi", "쿠폰"), L3(`${youReady()} ready`, `${youReady()} sẵn sàng`, `${youReady()}개 사용 가능`)]);
@@ -2580,7 +2634,8 @@ function vSettings() {
   h += `<h2>${L3("About","Giới thiệu","정보")}</h2><p class="sub sm" id="demo-safety"><b>${L3("Demo safety: prototype only.","An toàn bản demo: chỉ là bản thử nghiệm.","데모 안전 기능: 프로토타입 전용.")}</b> ${L3("Cici's safety replies follow a fixed, tested list and may miss new wording. The 'Need help?' link is always under the chat. The real app will use a stronger check.","Các câu trả lời an toàn của Cici dựa trên một danh sách cố định đã kiểm thử và có thể bỏ sót cách diễn đạt mới. Liên kết 'Cần hỗ trợ?' luôn ở dưới khung chat. Ứng dụng thật sẽ dùng cách kiểm tra mạnh hơn.",CICI_KO + "의 안전 답변은 테스트된 고정 목록을 따르며 새로운 표현은 놓칠 수 있어요. '도움이 필요하세요?' 링크는 항상 대화 아래에 있어요. 실제 앱은 더 강력한 검사를 사용할 거예요.")}</p>`;
   return h;
 }
-function renderView() { if (ST.page === "p2char" && !P2()) ST.page = null; if (!FLAGS.quest) { if (QUEST_RE.test(ST.page || "")) ST.page = null; if (QUEST_RE.test(ST.tab || "")) ST.tab = "home"; if (QUEST_RE.test(ST.bkFrom || "")) ST.bkFrom = "home"; } if (ST.tab === "book" || ST.tab === "ask") ST.tab = "cici"; /* NT-7: old tabs land on Cici */ $("#view").classList.toggle("cici-v", ST.tab === "cici" && !ST.page && !ST.store); $("#view").innerHTML = ST.page === "bookings" ? vBookings() : ST.page === "notif" ? vNotif() : ST.page === "nset" ? vNSet() : ST.page === "wallet" ? vWallet() : ST.page === "vouchers" ? vVouchers() : ST.page === "settings" ? vSettings() : ST.page === "points" ? pointsBlock() + storeAppBtn() : ST.page === "look" ? vLook() : ST.page === "p2char" && P2() ? p2CharPage() : ST.page === "shop" ? shopPage() : ST.page === "auth" ? authPage() : ST.page === "onboard" ? onboardPage() : ST.page === "profile-edit" ? profileEditPage() : ST.store ? vStore(ST.store) : ({ home: vHome, discover: vDiscover, look: vLook, cici: vCici, you: vYou }[ST.tab] || vHome)(); }
+function syncHomeBleed() { const app = $("#app"); if (app) app.classList.toggle("home-bleed", (ST.tab === "home" || ST.tab === "you" || (ST.tab === "cici" && CH.cici && !CH.cici.msgs.length)) && !ST.page && !ST.store); }
+function renderView() { if (ST.page === "p2char" && !P2()) ST.page = null; if (!FLAGS.quest) { if (QUEST_RE.test(ST.page || "")) ST.page = null; if (QUEST_RE.test(ST.tab || "")) ST.tab = "home"; if (QUEST_RE.test(ST.bkFrom || "")) ST.bkFrom = "home"; } if (ST.tab === "book" || ST.tab === "ask") ST.tab = "cici"; /* NT-7: old tabs land on Cici */ syncHomeBleed(); $("#view").classList.toggle("cici-v", ST.tab === "cici" && !ST.page && !ST.store); $("#view").innerHTML = ST.page === "bookings" ? vBookings() : ST.page === "notif" ? vNotif() : ST.page === "nset" ? vNSet() : ST.page === "wallet" ? vWallet() : ST.page === "vouchers" ? vVouchers() : ST.page === "settings" ? vSettings() : ST.page === "points" ? pointsBlock() + storeAppBtn() : ST.page === "look" ? vLook() : ST.page === "p2char" && P2() ? p2CharPage() : ST.page === "shop" ? shopPage() : ST.page === "auth" ? authPage() : ST.page === "onboard" ? onboardPage() : ST.page === "profile-edit" ? profileEditPage() : ST.store ? vStore(ST.store) : ({ home: vHome, discover: vDiscover, look: vLook, cici: vCici, you: vYou }[ST.tab] || vHome)(); }
 /* MVP-L1/L7: the unlock animation plays once, on the next normal Home view (deferred while a crisis/urgent turn is in force, A6) */
 function maybeUnlock() {
   if (!ME || ST.tab !== "home" || ST.page || ST.store || gated() || $(".sheet") || $(".munlock")) return;
@@ -2594,7 +2649,7 @@ function closeUnlock() { const el = $(".munlock"); if (el) el.remove(); }
 document.addEventListener("click", e => { const b = e.target.closest("[data-act=unlwear],[data-act=unlclose]"); if (!b) return; if (b.dataset.act === "unlwear") { ST.wear = b.dataset.v; try { localStorage.setItem("cici.wear", ST.wear); } catch (x) {} track("cici_item_equip", { item: ST.wear }); } closeUnlock(); render(); });
 document.addEventListener("click", e => { const b = e.target.closest("[data-act=ciciact]"); if (!b || !window.CICI_ACT) return; ciciAct = b.dataset.v || "stand"; if (ST.page !== "look") return; render(); const fig = document.querySelector(".cici-act"); if (fig) fig.scrollIntoView({ block: "start" }); });
 document.addEventListener("keydown", e => { if (e.key === "Escape" && $(".munlock")) { closeUnlock(); } });
-function render() { document.documentElement.lang = L; { const sk = $("#skipl"); if (sk) sk.textContent = L3("Skip to content", "Bỏ qua đến nội dung", "본문으로 건너뛰기"); const nv = $("#tabs"); if (nv) nv.setAttribute("aria-label", L3("Main", "Điều hướng chính", "주 메뉴")); } $("#top").innerHTML = header(); renderView(); $("#tabs").innerHTML = tabs(); $("#top").innerHTML = header(); saveThread(); hydrateCuts(); setTimeout(applyEquipped, 0); setTimeout(maybeUnlock, 0); }
+function render() { syncHomeBleed(); document.documentElement.lang = L; { const sk = $("#skipl"); if (sk) sk.textContent = L3("Skip to content", "Bỏ qua đến nội dung", "본문으로 건너뛰기"); const nv = $("#tabs"); if (nv) nv.setAttribute("aria-label", L3("Main", "Điều hướng chính", "주 메뉴")); } $("#top").innerHTML = header(); renderView(); $("#tabs").innerHTML = tabs(); $("#top").innerHTML = header(); saveThread(); hydrateCuts(); setTimeout(applyEquipped, 0); setTimeout(maybeUnlock, 0); }
 /* ===== Discover v2: list-first (GrabFood-style) with a static map toggle ===== */
 Object.assign(S, {
   barber: { name: "Kiwi Barber", area: "Quận 1 (District 1)", cat: "hair", kind: "appt", color: "#5A5F6B", logo: "KB", joined: false, visits: 0,
@@ -3009,16 +3064,17 @@ const fDayAbs = d => d >= 0 ? fDay(d) : new Intl.DateTimeFormat(LOC[L], { weekda
 function vBookings() {
   const up = bkUpcoming(), past = bkPastList(); if (!ST.bkSeg) ST.bkSeg = up.length ? "up" : "past";
   const seg = (k, l, n) => `<button class="chip" aria-pressed="${ST.bkSeg === k}" data-act="bkseg" data-v="${k}">${l} <span class="sub sm">${n}</span></button>`;
-  let h = `<h1>${t("bkTitle")}</h1><div class="chips" role="group" aria-label="${t("bkTitle")}">${seg("up", t("bkUp"), up.length)}${seg("past", t("bkPast"), past.length)}</div>`;
+  const misDone = ["attend", "newplace", "stretch"].filter(k => ST.miss[k]).length;
+  let h = `<div class="stack" style="margin:4px 0 12px"><button class="btn full" data-act="go" data-v="cici:book">${esc(t("book"))}</button><button class="btn ghost full" data-act="gotasks">${esc(t("missions"))} · ${misDone}/3</button></div><div class="chips" role="group" aria-label="${t("bkTitle")}">${seg("up", t("bkUp"), up.length)}${seg("past", t("bkPast"), past.length)}</div>`;
   if (ST.bkSeg === "up") h += up.length ? `<div class="card" role="list" style="margin-top:10px">${up.map(bkRowUp).join("")}</div><p class="sub sm" style="margin-top:8px">${tr("The policy is saved with your booking, so a later change never surprises you.")}</p>` : `<div class="card" style="margin-top:10px">${nEmpty(esc(t("bkEmptyUp")), "idle")}<button class="btn full" data-act="go" data-v="cici:book">${t("chipBook")}</button></div>`;
   else h += past.length ? `<div class="card" role="list" style="margin-top:10px">${past.map(bkRowPast).join("")}</div><p class="sub sm" style="margin-top:8px">${esc(L3("Visits from the last 12 months. Ratings are private to each place and don't earn points.", "Các buổi trong 12 tháng qua. Đánh giá chỉ nơi đó xem được và không cộng điểm.", "최근 12개월 방문이에요. 평가는 해당 매장만 볼 수 있고 포인트는 없어요."))}</p>` : `<div class="card" style="margin-top:10px">${nEmpty(esc(t("bkEmptyPast")), "idle")}</div>`;
   return h;
 }
 function openBookings(seg, id, from) {
-  closeSheet(); ST.bkFrom = from || (ST.store ? "store:" + ST.store : ST.page ? "page:" + ST.page : ST.tab) || "you"; ST.store = null; ST.page = "bookings";
+  closeSheet(); if (ST.page !== "bookings") ST.bkFrom = from || (ST.store ? "store:" + ST.store : ST.page ? "page:" + ST.page : ST.tab) || "you"; ST.store = null; ST.page = "bookings";
   ST.bkHi = id ? +id : null; ST.bkSeg = seg || (ST.bkHi ? (bkUpcoming().some(b => b.id === ST.bkHi) ? "up" : "past") : null);
   track("my_bookings_open", {}); render(); window.scrollTo(0, 0);
-  if (ST.bkHi) { const el = $("#bk-" + ST.bkHi); if (el) { el.scrollIntoView({ block: "center" }); el.setAttribute("tabindex", "-1"); el.focus(); } } else $("#view").focus();
+  if (ST.bkHi) { const el = $("#bk-" + ST.bkHi); if (el) { el.scrollIntoView({ block: "center" }); el.setAttribute("tabindex", "-1"); el.focus(); } } else { const v = $("#view"); if (v) v.focus({ preventScroll: true }); window.scrollTo(0, 0); }
 }
 function bookingsBack() {
   const f = ST.bkFrom || "you"; ST.page = null; ST.bkHi = null; ST.bkSeg = null; ST.bkFrom = null;
@@ -3032,12 +3088,12 @@ function ciciAgainChips() { return `<div class="scroll" role="group" aria-label=
 function vCici() {
   const c = CH.cici, g = gated(); c.unread = false;
   const scope = c.scope && S[c.scope] ? `<div class="chips" role="group" aria-label="${L3("Booking at", "Đặt tại", "예약 매장")}"><button class="chip" aria-pressed="true" data-act="unscope" aria-label="${esc(t("removeScope", { store: S[c.scope].name }))}">${logo(c.scope)} ${esc(S[c.scope].name)} ${ic("x", "s")}</button></div>` : "";
-  const head = `<div class="row" style="margin:4px 0 6px"><span class="av cav-h" id="cici-hd-av" aria-hidden="true"${g ? "" : p2SkinAttr()}><img src="${A}${g ? "calm" : "greet"}.webp" alt="">${g ? "" : outfitBadge(ST.wear) + (P2() ? p2Acc() : "")}</span><div class="grow"><h1 style="margin:0;word-break:keep-all;overflow-wrap:normal">${t("cici")}</h1><div class="sub sm">${L3("Book or ask, all your places", "Đặt lịch hoặc hỏi, mọi nơi của bạn", "예약과 질문, 모든 매장")}</div></div>
+  const headAv = g ? `<img src="${A}calm.webp" alt="">` : `<video src="${esc(outfitVidTop())}" muted loop playsinline autoplay></video>`;
+  const head = `<div class="row cici-hd" style="margin:4px 0 6px"><span class="av cav-h" id="cici-hd-av" aria-hidden="true"${g ? "" : p2SkinAttr()}>${headAv}${g ? "" : outfitBadge(ST.wear) + (P2() ? p2Acc() : "")}</span><div class="grow"><h1 style="margin:0;word-break:keep-all;overflow-wrap:normal">${t("cici")}</h1><div class="sub sm">${L3("Book or ask, all your places", "Đặt lịch hoặc hỏi, mọi nơi của bạn", "예약과 질문, 모든 매장")}</div></div>
   ${g ? "" : `<button class="icb" data-act="mybk" data-from="cici" aria-label="${t("chipMyBk")}">${ic("cal")}</button>`}</div>`; /* A7/OQ5: the voice-demo call is cut from the MVP, so the overflow menu that only held it is gone */
   const empty = !c.msgs.length;
-  const ciciHeroImg = OUTFIT_IMG[ST.wear] ? `<img src="${esc(OUTFIT_IMG[ST.wear])}" alt="" class="nhero-cut" loading="eager">` : cut("wave", { alt: L3("Cici waving hello", "Cici vẫy tay chào", "손 흔들며 인사하는 " + CICI_KO), eager: 1, cls: "nhero-cut" });
-  const hello = empty ? `<div class="nhero">${ciciHeroImg}<div class="msg n nhero-msg"><span class="vh">${esc(ciciNm())}: </span>${esc(t("ciciHello", { name: L3("Mina", "Mina", "미나") }))}</div></div>` + qchipRow(false) + `<h2>${t("bookAgain")}</h2>${ciciAgainChips()}` : "";
-  return head + scope + hello + chatUI("cici", L3("Book or ask anything", "Đặt lịch hoặc hỏi bất cứ điều gì", "무엇이든 물어보세요"), ""); /* the 3 quick chips show once, on the empty state */
+  const hello = empty ? `<div class="nhero cici-hello"><video class="cici-hello-vid" src="${esc(outfitVidTop())}" muted loop playsinline autoplay></video>${head}<div class="cici-hello-foot"><p class="cici-hello-msg"><span class="vh">${esc(ciciNm())}: </span>${esc(t("ciciHello", { name: L3("Mina", "Mina", "미나") }))}</p>${qchipRow(false)}</div></div><h2>${t("bookAgain")}</h2>${ciciAgainChips()}` : "";
+  return (empty ? "" : head) + scope + hello + chatUI("cici", L3("Book or ask anything", "Đặt lịch hoặc hỏi bất cứ điều gì", "무엇이든 물어보세요"), ""); /* the 3 quick chips show once, on the empty state */
 }
 function setTab(v) { if (v === "book" || v === "ask") v = "cici"; if (!FLAGS.quest && QUEST_RE.test(v || "")) v = "home"; if (v !== ST.tab) ST.prevTab = ST.tab; ST.tab = v; ST.page = null; ST.store = null; track("tab_open", { tab: v }); if (v === "cici") track("cici_tab_open"); }
 function ciciBookPrompt() {
@@ -3134,6 +3190,7 @@ document.addEventListener("click", e => {
   switch (a) {
     case "close": clearInterval(stretchT); closeSheet(); break;
     case "tab": go("tab:" + d.v); break;
+    case "gotasks": closeSheet(); setTab("home"); render(); { const m = $("#home-mis-h") || $("#home-mis"); if (m) m.scrollIntoView({ block: "start" }); const v = $("#view"); if (v) v.focus({ preventScroll: true }); } break;
     case "go": go(d.v); break;
     case "mybk": openBookings(null, null, d.from || null); break;
     case "bkseg": ST.bkSeg = d.v; ST.bkHi = null; renderView(); { const f = $(`[data-act="bkseg"][data-v="${d.v}"]`); if (f) f.focus(); } break;
@@ -3601,7 +3658,7 @@ function notesCard() {
   if (!ME) return ""; pvTick(ME); const ns = ME.notices.filter(n => !n.seen && (n.k !== "milestone" || PV.flag));
   if (!ns.length) return "";
   const ms = PV.flag && ns.some(n => n.k === "milestone");
-  return `<section class="card row" id="pv-notes" style="margin:12px 0;border-color:var(--rasp);gap:8px" aria-live="polite">${ms ? cut("ribbon", { cls: "cut-note", alt: L3("Cici twirling a ribbon", "Cici múa dải ruy băng", "리본을 돌리는 " + CICI_KO) }) : ""}<div class="grow">${ns.map(n => `<p class="sm" style="margin:0"><b>${esc(noteText(n))}</b></p>`).join("")}</div><button class="btn sec" data-act="pvseen">OK</button></section>`;
+  return `<section class="card row" id="pv-notes" aria-live="polite">${ms ? cut("ribbon", { cls: "cut-note", alt: L3("Cici twirling a ribbon", "Cici múa dải ruy băng", "리본을 돌리는 " + CICI_KO) }) : ""}<div class="grow">${ns.map(n => `<p class="sm" style="margin:0"><b>${esc(noteText(n))}</b></p>`).join("")}</div><button class="btn sec" data-act="pvseen">OK</button></section>`;
 }
 function pendingCard() {
   if (!ME) return ""; const p = pendingFor(ME, PV.now()); if (!p.length) return "";
