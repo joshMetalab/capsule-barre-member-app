@@ -2343,14 +2343,17 @@ function tabs() {
 }
 /* ===== MVP character-first Home (MVP-H1..H8) ===== */
 const outfitIdx = id => { const n = +String(id || "").replace(/^o/, ""); return n >= 1 && n <= 5 ? n : 0; };
-const OUTFIT_IMG = { o1:"assets/cici-outfits/01_blush_wrap.png", o2:"assets/cici-outfits/07_powder_blue_leggings.png", o3:"assets/cici-outfits/07_powder_blue_leggings.png", o4:"assets/cici-outfits/24_pink_hoodie.png", o5:"assets/cici-outfits/20_monochrome_polo.png", wrap:"assets/cici-outfits/09_black_ballet_wrap.png", lan:"assets/cici-outfits/14_pink_knit.png" };
+const OUTFIT_IMG = { o1:"assets/cici-outfits/01_blush_wrap.png", o2:"assets/cici-outfits/07_powder_blue_leggings.png", o3:"assets/cici-outfits/07_powder_blue_leggings.png", o4:"assets/cici-outfits/24_pink_hoodie.png", o5:"assets/cici-outfits/20_monochrome_polo.png", icy:"assets/cici-outfits/02_icy_blue_unitard.png", ivory:"assets/cici-outfits/03_ivory_clasp.png", shoulder:"assets/cici-outfits/16_ivory_one_shoulder.png", wrap:"assets/cici-outfits/09_black_ballet_wrap.png", lan:"assets/cici-outfits/14_pink_knit.png" };
 const OUTFIT_KO = ["기본", "글로우", "글로우", "블룸", "아이콘"], OUTFIT_VI = ["Mặc định", "Glow", "Glow", "Bloom", "Icon"];
 const outfitNm = n => L === "ko" ? OUTFIT_KO[n - 1] : L === "vi" ? OUTFIT_VI[n - 1] : OUTFIT[n - 1];
-const wearNm = () => { const n = outfitIdx(ST.wear); if (n) return outfitNm(n); return ST.wear === "wrap" ? tr("Studio wrap top") : ST.wear === "lan" ? tr("Mid-Autumn lantern") : ""; };
+const icyNm = () => L3("Icy", "Xanh băng", "아이스 블루");
+const ivoryNm = () => L3("Ivory", "Ngà", "아이보리");
+const shoulderNm = () => L3("One shoulder", "Lệch vai", "원숄더");
+const wearNm = () => { const n = outfitIdx(ST.wear); if (n) return outfitNm(n); if (ST.wear === "icy") return icyNm(); if (ST.wear === "ivory") return ivoryNm(); if (ST.wear === "shoulder") return shoulderNm(); return ST.wear === "wrap" ? tr("Studio wrap top") : ST.wear === "lan" ? tr("Mid-Autumn lantern") : ""; };
 /* decorative accessory drawn over the same Cici art (no new art needed): Studio ribbon, Glow sparkle, Bloom flower, Icon star clip */
 /* acc-fix: mode "pill" = inline icon (inside the Wearing pill), "frame" = round badge at the bottom-right corner of a full-body frame, default = tiny corner badge on small avatars (.cav-h) */
 function outfitBadge(id, mode) {
-  const n = outfitIdx(id), d = { 1: '<circle cx="12" cy="12" r="7" fill="#E98597"/><circle cx="12" cy="12" r="4" fill="#fff" opacity=".6"/>', 2: '<path d="M12 12c-3-4-8-5-8-1s5 3 8 1c3 2 8 3 8-1s-5-3-8 1z" fill="#B04A5E"/>', 3: '<path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z" fill="#E9B44C"/>', 4: '<g fill="#E98597"><circle cx="12" cy="6" r="4"/><circle cx="6" cy="12" r="4"/><circle cx="18" cy="12" r="4"/><circle cx="12" cy="18" r="4"/></g><circle cx="12" cy="12" r="3.2" fill="#FFD36E"/>', 5: '<path d="M12 2l3 6.5 7 .8-5.2 4.8 1.5 7L12 17.6 5.7 21.1l1.5-7L2 9.3l7-.8z" fill="#8E3346"/>' }[n];
+  const n = outfitIdx(id), extra = { icy: '<circle cx="12" cy="12" r="7" fill="#A9C9E8"/><circle cx="12" cy="12" r="3.5" fill="#fff" opacity=".75"/>', ivory: '<circle cx="12" cy="12" r="7" fill="#F3E6D0"/><circle cx="12" cy="12" r="3.5" fill="#fff" opacity=".8"/>', shoulder: '<circle cx="12" cy="12" r="7" fill="#E7D7C3"/><circle cx="12" cy="12" r="3.5" fill="#fff" opacity=".8"/>' }, d = extra[id] || { 1: '<circle cx="12" cy="12" r="7" fill="#E98597"/><circle cx="12" cy="12" r="4" fill="#fff" opacity=".6"/>', 2: '<path d="M12 12c-3-4-8-5-8-1s5 3 8 1c3 2 8 3 8-1s-5-3-8 1z" fill="#B04A5E"/>', 3: '<path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z" fill="#E9B44C"/>', 4: '<g fill="#E98597"><circle cx="12" cy="6" r="4"/><circle cx="6" cy="12" r="4"/><circle cx="18" cy="12" r="4"/><circle cx="12" cy="18" r="4"/></g><circle cx="12" cy="12" r="3.2" fill="#FFD36E"/>', 5: '<path d="M12 2l3 6.5 7 .8-5.2 4.8 1.5 7L12 17.6 5.7 21.1l1.5-7L2 9.3l7-.8z" fill="#8E3346"/>' }[n];
   if (!d) return ""; return `<svg class="wear-acc${mode === "frame" ? " frame" : mode === "pill" ? " pill" : ""}" data-wear="${esc(id)}" viewBox="0 0 24 24" aria-hidden="true">${d}</svg>`;
 }
 function heroScene() {
@@ -2558,10 +2561,13 @@ const CHAR_VIDS = [
   { id:"v14a", src:"assets/videos/video_14_part1.mp4",   label:"Bloom" },
   { id:"v15",  src:"assets/videos/video15.mp4",          label:"Icon" },
   { id:"v9",   src:"assets/videos/video_9.mp4",          label:"Wrap top" },
-  { id:"v14b", src:"assets/videos/video_14_part2.mp4",   label:"Lantern" }
+  { id:"v14b", src:"assets/videos/video_14_part2.mp4",   label:"Lantern" },
+  { id:"vicy", src:"assets/videos/gemini_generated_video_a7529e6c.mp4", label:"Icy" },
+  { id:"v3",   src:"assets/videos/video_3.mp4",          label:"Ivory" },
+  { id:"v16",  src:"assets/videos/video_16.mp4",         label:"One shoulder" }
 ];
 /* Maps outfit id → CHAR_VIDS id */
-const OUTFIT_VID = { o1:"v1", o2:"v7", o3:"v7", o4:"v14a", o5:"v15", wrap:"v9", lan:"v14b" };
+const OUTFIT_VID = { o1:"v1", o2:"v7", o3:"v7", o4:"v14a", o5:"v15", icy:"vicy", ivory:"v3", shoulder:"v16", wrap:"v9", lan:"v14b" };
 /* Outfit metadata — name & description for the Look tab tiles */
 const OUTFIT_META = {
   o1:   { vi:"Áo wrap hồng nhạt · Tất cả trình độ",       en:"Blush wrap · All levels",             ko:"블러쉬 랩 · 전 레벨" },
@@ -2570,7 +2576,10 @@ const OUTFIT_META = {
   o4:   { vi:"Hoodie hồng · Phong cách Bloom",             en:"Pink hoodie · Bloom style",            ko:"핑크 후디 · 블룸" },
   o5:   { vi:"Polo đơn sắc · Phong cách Icon",             en:"Monochrome polo · Icon style",         ko:"모노크롬 폴로 · 아이콘" },
   wrap: { vi:"Áo wrap ballet đen · Phiên bản đặc biệt",    en:"Black ballet wrap · Special edition",  ko:"블랙 발레 랩 · 스페셜 에디션" },
-  lan:  { vi:"Áo len hồng · Trung Thu giới hạn",           en:"Pink knit · Mid-Autumn limited",       ko:"핑크 니트 · 중추절 한정" }
+  lan:  { vi:"Áo len hồng · Trung Thu giới hạn",           en:"Pink knit · Mid-Autumn limited",       ko:"핑크 니트 · 중추절 한정" },
+  icy:  { vi:"Bodysuit xanh băng",                        en:"Icy blue unitard",                     ko:"아이스 블루 유니타드" },
+  ivory:{ vi:"Ngà · chắp tay",                           en:"Ivory · hands together",               ko:"아이보리 · 모은 손" },
+  shoulder:{ vi:"Ngà · lệch vai",                        en:"Ivory · one shoulder",                 ko:"아이보리 · 원숄더" }
 };
 /* Upper-body videos — one per equipped outfit (o5 falls back to o1) */
 const OUTFIT_VID_TOP = {
@@ -2580,6 +2589,9 @@ const OUTFIT_VID_TOP = {
   o4:   "assets/teaching-videos/hf_20261016_032817_149589a8-ff24-44ea-9440-661b0d941cb3.mp4",
   wrap: "assets/teaching-videos/hf_20261016_032725_803b61f2-7841-48d5-acfa-0db74ab83815.mp4",
   lan:  "assets/teaching-videos/hf_20261016_032754_46c2e04d-4d32-4449-9a16-1abc077b8f6e.mp4",
+  icy:  "assets/teaching-videos/hf_20261016_032725_cfe107df-0fd4-4526-8b45-3b5bb9655d7c.mp4",
+  ivory:"assets/teaching-videos/hf_20261016_032725_2a30a02b-7cfa-42c1-bc4c-5b86468c9103.mp4",
+  shoulder:"assets/teaching-videos/hf_20261016_032754_c4225785-c184-4eeb-87c4-16a351b5a5a8.mp4",
 };
 const outfitVidTop = () => OUTFIT_VID_TOP[ST.wear] || OUTFIT_VID_TOP.o1;
 
@@ -2594,7 +2606,7 @@ function ciciActBlock() {
   return `<h2 style="margin:0 0 10px">${L3("Actions", "Hành động", "동작")}</h2><div class="cici-act">${moving}</div><div class="chips" style="margin-bottom:8px">${chips}</div><p class="sub sm" style="margin:0 0 14px">${esc(act.ko)} · ${esc(act.en)} · ${esc(act.vi)}</p>`;
 }
 function vLook() {
-  const lv = lvlOf(ME), OF = [1, 2, 3, 4, 5], CO = [["wrap", tr("Studio wrap top")], ["lan", tr("Mid-Autumn lantern")]].filter(([id]) => ST.owned.includes(id));
+  const lv = lvlOf(ME), OF = [1, 2, 3, 4, 5], CO = [["wrap", tr("Studio wrap top")], ["lan", tr("Mid-Autumn lantern")]].filter(([id]) => ST.owned.includes(id)), EXTRA = [["icy", icyNm()], ["ivory", ivoryNm()], ["shoulder", shoulderNm()]];
   const tile = (id, nm, sub, ok) => { const img = OUTFIT_IMG[id] || ""; return `<button class="look-tile${ok ? "" : " lock"}" data-act="${ok ? "pvwear" : ""}" data-v="${id}" ${ok ? `aria-pressed="${ST.wear === id}"` : 'disabled aria-disabled="true"'} aria-label="${esc(nm + ", " + sub)}">${img ? `<img src="${img}" alt="" loading="lazy">` : ""}<div class="look-tile-top"><b class="sm">${esc(nm)}</b></div><div class="look-tile-bot"><span class="sub sm">${esc(sub)}</span></div>${ST.wear === id ? `<span class="look-tile-wearing">${L3("Wearing","Đang mặc","착용 중")}</span>` : ""}${!ok ? `<div class="lock-veil">${ic("lock")}</div>` : ""}</button>`; };
   const got = n => n <= lv || (ME.unlocked || []).includes("o" + n); /* MVP-L3/OQ4: kept after a reversal */
   const eq = ST.shopEquipped || {};
@@ -2612,7 +2624,7 @@ function vLook() {
   const outfitDesc = id => { const m = OUTFIT_META[id]; if (!m) return ""; return L === "vi" ? m.vi : L === "ko" ? m.ko : m.en; };
   const curDesc = outfitDesc(ST.wear);
   const metaBar = `<div class="look-meta"><div style="min-width:0"><b class="lm-name">${esc(wn)}</b>${curDesc ? `<div class="sub sm" style="margin-top:1px">${esc(curDesc)}</div>` : ""}</div><span class="lm-tag">${L3("Wearing","Đang mặc","착용 중")}</span><button class="btn ghost" data-act="open-shop" style="flex:none;padding:6px 12px;font-size:12px">${coinSvg} ${L3("Shop","Shop","쇼핑")}</button></div>`;
-  return heroHtml + metaBar + `<h2 style="margin:0 0 10px">${L3("Outfits", "Trang phục", "코디")}</h2><div class="tiles" id="look-tiles">${OF.map(n => tile("o" + n, outfitNm(n), got(n) ? outfitDesc("o" + n) : pvT("levelLocked", { n }), got(n))).join("")}${CO.map(([id, nm]) => tile(id, nm, outfitDesc(id), true)).join("")}</div>`;
+  return heroHtml + metaBar + `<h2 style="margin:0 0 10px">${L3("Outfits", "Trang phục", "코디")}</h2><div class="tiles" id="look-tiles">${OF.map(n => tile("o" + n, outfitNm(n), got(n) ? outfitDesc("o" + n) : pvT("levelLocked", { n }), got(n))).join("")}${EXTRA.map(([id, nm]) => tile(id, nm, outfitDesc(id), true)).join("")}${CO.map(([id, nm]) => tile(id, nm, outfitDesc(id), true)).join("")}</div>`;
 }
 function vWallet() {
   const rows = joinedIds().map(sid => (WALLET[sid] || []).map(p => walletRow(sid, p)).join("")).join("") + upcoming().filter(b => b.dep).map(depRow).join("");
@@ -3728,7 +3740,7 @@ ${m.legacyOpen ? `<p class="sub sm" id="pv-legacy" style="margin:6px 0 0">${esc(
 function wardrobe() {
   const lv = lvlOf(ME), OF = [["o1", 1], ["o2", 2], ["o3", 3], ["o4", 4], ["o5", 5]], CO = [["wrap", tr("Studio wrap top")], ["lan", tr("Mid-Autumn lantern")]].filter(([id]) => ST.owned.includes(id));
   const tile = (id, nm, sub, ok) => `<button class="tile${ok ? "" : " lock"}" data-act="pvwear" data-v="${id}" ${ok ? `aria-pressed="${ST.wear === id}"` : "disabled"} style="min-height:44px;font:inherit;color:inherit"><span class="ic">${ic(ok ? "shirt" : "lock")}</span><b class="sm">${esc(nm)}</b><span class="sub sm">${esc(sub)}</span></button>`;
-  return `<h2>${t("wardrobe")}</h2><div class="tiles">${OF.map(([id, n]) => tile(id, OUTFIT[n - 1], (n <= lv || (ME.unlocked || []).includes(id)) ? (ST.wear === id ? "✓" : tr("Owned")) : pvT("levelLocked", { n }), n <= lv || (ME.unlocked || []).includes(id))).join("")}${CO.map(([id, nm]) => tile(id, nm, tr("Owned"), true)).join("")}</div>`;
+  return `<h2>${t("wardrobe")}</h2><div class="tiles">${OF.map(([id, n]) => tile(id, OUTFIT[n - 1], (n <= lv || (ME.unlocked || []).includes(id)) ? (ST.wear === id ? "✓" : tr("Owned")) : pvT("levelLocked", { n }), n <= lv || (ME.unlocked || []).includes(id))).join("")}${[["icy", icyNm()], ["ivory", ivoryNm()], ["shoulder", shoulderNm()]].map(([id, nm]) => tile(id, nm, tr("Owned"), true)).join("")}${CO.map(([id, nm]) => tile(id, nm, tr("Owned"), true)).join("")}</div>`;
 }
 function vchLine(c) { const v = c.terms; return v.type === "percent" ? v.value + "%" : v.type === "fixed" ? fmtMoney(v.value, v.cur || "VND") : pvTx(v.title); }
 function scopeTx(v) { return v.brand ? pvT("offeredBy", { brand: v.brand }) : (v.store ? pvT("onlyAt", { s: storeNm(v.store) }) : L3("Any participating place", "Mọi nơi tham gia", "참여 매장 어디서나")); }
