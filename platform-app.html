@@ -2294,8 +2294,8 @@ function tabs() {
 }
 /* ===== MVP character-first Home (MVP-H1..H8) ===== */
 const outfitIdx = id => { const n = +String(id || "").replace(/^o/, ""); return n >= 1 && n <= 5 ? n : 0; };
-const OUTFIT_IMG = { o1:"assets/cici-outfits/01_blush_wrap.png", o2:"assets/cici-outfits/02_icy_blue_unitard.png", o3:"assets/cici-outfits/07_powder_blue_leggings.png", o4:"assets/cici-outfits/24_pink_hoodie.png", o5:"assets/cici-outfits/20_monochrome_polo.png", wrap:"assets/cici-outfits/09_black_ballet_wrap.png", lan:"assets/cici-outfits/14_pink_knit.png" };
-const OUTFIT_KO = ["기본", "스튜디오", "글로우", "블룸", "아이콘"], OUTFIT_VI = ["Mặc định", "Studio", "Glow", "Bloom", "Icon"];
+const OUTFIT_IMG = { o1:"assets/cici-outfits/01_blush_wrap.png", o2:"assets/cici-outfits/07_powder_blue_leggings.png", o3:"assets/cici-outfits/07_powder_blue_leggings.png", o4:"assets/cici-outfits/24_pink_hoodie.png", o5:"assets/cici-outfits/20_monochrome_polo.png", wrap:"assets/cici-outfits/09_black_ballet_wrap.png", lan:"assets/cici-outfits/14_pink_knit.png" };
+const OUTFIT_KO = ["기본", "글로우", "글로우", "블룸", "아이콘"], OUTFIT_VI = ["Mặc định", "Glow", "Glow", "Bloom", "Icon"];
 const outfitNm = n => L === "ko" ? OUTFIT_KO[n - 1] : L === "vi" ? OUTFIT_VI[n - 1] : OUTFIT[n - 1];
 const wearNm = () => { const n = outfitIdx(ST.wear); if (n) return outfitNm(n); return ST.wear === "wrap" ? tr("Studio wrap top") : ST.wear === "lan" ? tr("Mid-Autumn lantern") : ""; };
 /* decorative accessory drawn over the same Cici art (no new art needed): Studio ribbon, Glow sparkle, Bloom flower, Icon star clip */
@@ -2482,7 +2482,6 @@ function vYou() {
 /* Character showcase videos — one per outfit, used in hero (Home + Look tab) */
 const CHAR_VIDS = [
   { id:"v1",   src:"assets/videos/video1.mp4",          label:"Default" },
-  { id:"v11",  src:"assets/videos/video_1_1.mp4",        label:"Studio" },
   { id:"v7",   src:"assets/videos/video_7.mp4",          label:"Glow" },
   { id:"v14a", src:"assets/videos/video_14_part1.mp4",   label:"Bloom" },
   { id:"v15",  src:"assets/videos/video15.mp4",          label:"Icon" },
@@ -2490,21 +2489,22 @@ const CHAR_VIDS = [
   { id:"v14b", src:"assets/videos/video_14_part2.mp4",   label:"Lantern" }
 ];
 /* Maps outfit id → CHAR_VIDS id */
-const OUTFIT_VID = { o1:"v1", o2:"v11", o3:"v7", o4:"v14a", o5:"v15", wrap:"v9", lan:"v14b" };
+const OUTFIT_VID = { o1:"v1", o2:"v7", o3:"v7", o4:"v14a", o5:"v15", wrap:"v9", lan:"v14b" };
 /* Outfit metadata — name & description for the Look tab tiles */
 const OUTFIT_META = {
   o1:   { vi:"Áo wrap hồng nhạt · Tất cả trình độ",       en:"Blush wrap · All levels",             ko:"블러쉬 랩 · 전 레벨" },
-  o2:   { vi:"Unitard xanh băng · Phong cách Studio",      en:"Icy blue unitard · Studio style",     ko:"아이시 블루 유니타드 · 스튜디오" },
+  o2:   { vi:"Leggings xanh phấn · Phong cách Glow",       en:"Powder blue leggings · Glow style",   ko:"파우더 블루 레깅스 · 글로우" },
   o3:   { vi:"Leggings xanh phấn · Phong cách Glow",       en:"Powder blue leggings · Glow style",   ko:"파우더 블루 레깅스 · 글로우" },
   o4:   { vi:"Hoodie hồng · Phong cách Bloom",             en:"Pink hoodie · Bloom style",            ko:"핑크 후디 · 블룸" },
   o5:   { vi:"Polo đơn sắc · Phong cách Icon",             en:"Monochrome polo · Icon style",         ko:"모노크롬 폴로 · 아이콘" },
   wrap: { vi:"Áo wrap ballet đen · Phiên bản đặc biệt",    en:"Black ballet wrap · Special edition",  ko:"블랙 발레 랩 · 스페셜 에디션" },
   lan:  { vi:"Áo len hồng · Trung Thu giới hạn",           en:"Pink knit · Mid-Autumn limited",       ko:"핑크 니트 · 중추절 한정" }
 };
-/* Upper-body videos — one per equipped outfit (o3/o5 fall back to o1) */
+/* Upper-body videos — one per equipped outfit (o5 falls back to o1) */
 const OUTFIT_VID_TOP = {
   o1:   "assets/teaching-videos/hf_20261016_032725_4c276f97-3eab-406d-a226-1e1c9282b2dd.mp4",
-  o2:   "assets/teaching-videos/hf_20261016_032754_abc1f778-994d-490b-b5c9-79da201e8810.mp4",
+  o2:   "assets/teaching-videos/hf_20261016_032725_92fbdda2-4c7f-4724-a3de-ddb1c2df2984.mp4",
+  o3:   "assets/teaching-videos/hf_20261016_032725_92fbdda2-4c7f-4724-a3de-ddb1c2df2984.mp4",
   o4:   "assets/teaching-videos/hf_20261016_032817_149589a8-ff24-44ea-9440-661b0d941cb3.mp4",
   wrap: "assets/teaching-videos/hf_20261016_032725_803b61f2-7841-48d5-acfa-0db74ab83815.mp4",
   lan:  "assets/teaching-videos/hf_20261016_032754_46c2e04d-4d32-4449-9a16-1abc077b8f6e.mp4",
@@ -3270,7 +3270,7 @@ const PV = {
   now() { return Date.now() + this.srvOff; }
 };
 const EARN = { visit: 50, perDay: 2, newplace: 80, newPerMonth: 4, mission: 10, misDay: 2, misWeek: 60 }; /* spec §2 earning rules, used by the "How to earn" list */
-const LVL = [0, 500, 1500, 3000, 6000], OUTFIT = ["Default", "Studio", "Glow", "Bloom", "Icon"];
+const LVL = [0, 500, 1500, 3000, 6000], OUTFIT = ["Default", "Glow", "Glow", "Bloom", "Icon"];
 const homeTz = m => m.tz || "Asia/Saigon";
 const loc = (t, tz) => new Date(t + TZOFF[tz] * MIN); /* read with getUTC* */
 const dayKey = (m, t) => loc(t, homeTz(m)).toISOString().slice(0, 10);
