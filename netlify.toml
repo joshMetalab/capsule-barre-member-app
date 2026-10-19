@@ -1,0 +1,9 @@
+# Static member demo. No build step: Netlify publishes this repo as-is.
+[build]
+  publish = "."
+
+# Opening the site root shows the member app. Asset paths stay relative to /.
+[[redirects]]
+  from = "/"
+  to = "/platform-app.html"
+  status = 200
