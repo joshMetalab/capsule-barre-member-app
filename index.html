@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cici product report — member, shop, instructor, admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/report.css" />
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">Cici <span>report</span></div>
+      <nav class="nav">
+        <a href="#member">Member app</a>
+        <a href="#orderbook">Order book</a>
+        <a href="#admin">Platform admin</a>
+        <a href="#shop">Shop owner</a>
+        <a href="#instructor">Instructor</a>
+        <a href="#deploy">Deploy</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="kicker">Live product walkthrough</div>
+    <h1>Every screen in Cici, with a plain.</h1>
+    <p class="lede">
+      Three audiences, one static site. Drag this folder onto Netlify.
+      Screenshots are captured from the running English UI against live shop data.
+    </p>
+    <div class="meta">
+      <span class="chip">Member app · Expo</span>
+      <span class="chip">Shop desk · owner</span>
+      <span class="chip">Instructor shell</span>
+      <span class="chip">Platform HQ · super admin</span>
+      <span class="chip">Asia/Seoul</span>
+    </div>
+  </div>
+
+  <div class="audiences">
+    <a class="aud" href="#member">
+      <div class="who">Audience 1</div>
+      <h2>Member (app)</h2>
+      <p>People who book hourly courts, drop-in tickets, and packs (monthly, session, trainer). They chat with the shop,
+        leave reviews, and earn coins.</p>
+    </a>
+    <a class="aud" href="#admin">
+      <div class="who">Audience 2</div>
+      <h2>Platform admin</h2>
+      <p>HQ operators who see every store, account, support ticket, AI limit, and system check.</p>
+    </a>
+    <a class="aud" href="#shop">
+      <div class="who">Audience 3</div>
+      <h2>Shop owner &amp; instructor</h2>
+      <p>The desk: roster, timetable, reservations, capture, payroll. Instructors confirm lessons and close their task
+        list.</p>
+    </a>
+  </div>
+
+  <!-- ════════════ MEMBER ════════════ -->
+  <section class="block" id="member">
+    <h2>Member app</h2>
+    <p class="section-lead">
+      Phone-first companion for barre, pilates, gym, pickleball, and badminton.
+      Tabs: Home, Discover, Cici, You. The Book FAB opens My bookings.
+      Demo login: <code>demo@aicc.com</code> / <code>Test1234!</code>. OTP <code>123456</code>.
+    </p>
+
+    <h3>Get in</h3>
+    <div class="grid phones">
+      <figure class="shot">
+        <div class="frame"><img src="img/member/00-onboarding.png" alt="Onboarding" /></div>
+        <figcaption>
+          <span class="tag">Onboarding</span>
+          <h4>Hi, I’m Cici</h4>
+          <p>Three beats: discover places, book with Cici, earn XP and coins. Let’s go starts the account, or Sign in
+            for an existing member.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/01-auth.png" alt="Sign in" /></div>
+        <figcaption>
+          <span class="tag">Auth</span>
+          <h4>Welcome back</h4>
+          <p>Email and password. New members jump to Join free. Language stays English for this report (EN / VI / KO
+            live in Settings).</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/02-signup.png" alt="Create account" /></div>
+        <figcaption>
+          <span class="tag">Signup</span>
+          <h4>Create your account</h4>
+          <p>Name, email, phone (the number the desk already has), and a strong password. New members get +50 coins
+            after the email code.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/03-auth-2fa.png" alt="Two-step verification" /></div>
+        <figcaption>
+          <span class="tag">2FA</span>
+          <h4>Two-step verification</h4>
+          <p>A 6-digit code sent to phone or email. Local demo uses <code>123456</code>. Confirm unlocks Home.</p>
+        </figcaption>
+      </figure>
+    </div>
+
+    <h3>Home</h3>
+    <div class="grid phones">
+      <figure class="shot">
+        <div class="frame"><img src="img/member/10-home.png" alt="Home" /></div>
+        <figcaption>
+          <span class="tag">Tab · Home</span>
+          <h4>Greeting, missions, next class</h4>
+          <p>Good morning / afternoon / evening, Cici’s look, XP bar, daily missions (stretch, attend, new place), and
+            the next booked class. Browse &amp; Book jumps to Discover.</p>
+        </figcaption>
+      </figure>
+    </div>
+
+    <h3>Discover</h3>
+    <p class="section-lead">Sport chips filter live published venues: All, Barre, Pilates, Gym, Pickleball, Badminton.
+      Distance uses device location when allowed.</p>
+    <div class="grid phones">
+      <figure class="shot">
+        <div class="frame"><img src="img/member/20-discover.png" alt="Discover all sports" /></div>
+        <figcaption>
+          <span class="tag">Tab · Discover</span>
+          <h4>All venues</h4>
+          <p>Search, sport chips, and a card per shop: photo, sport, hours, offer chips (hourly / ticket / pack), and
+            distance.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/21-discover-badminton.png" alt="Discover badminton" /></div>
+        <figcaption>
+          <span class="tag">Sport</span>
+          <h4>Badminton</h4>
+          <p>Court venues. Typical offer is hourly rental inside opening hours, 30-minute steps, 60-minute minimum.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/22-discover-pickleball.png" alt="Discover pickleball" /></div>
+        <figcaption>
+          <span class="tag">Sport</span>
+          <h4>Pickleball</h4>
+          <p>Court venues with hourly rental plus a lesson pass. Same start / end picker as badminton.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/23-discover-pilates.png" alt="Discover pilates" /></div>
+        <figcaption>
+          <span class="tag">Sport</span>
+          <h4>Pilates</h4>
+          <p>Studio classes with a drop-in ticket and a pack class. Info lists monthly, session, and trainer packs the
+            desk sells.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/24-discover-gym.png" alt="Discover gym" /></div>
+        <figcaption>
+          <span class="tag">Sport</span>
+          <h4>Gym</h4>
+          <p>Strength and gym floors. Drop-in is the usual walk-in path when membership is off for that shop.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/25-discover-barre.png" alt="Discover barre" /></div>
+        <figcaption>
+          <span class="tag">Sport</span>
+          <h4>Barre</h4>
+          <p>Capsule Barre Geumho and other barre rooms. Session packs and trainer packs sit on the Info tab.</p>
+        </figcaption>
+      </figure>
+    </div>
+
+    <h3>Studio profile</h3>
+    <p class="section-lead">Info · Reviews · Rules. Call, map, share. Schedule by weekday. CTAs change with the slot:
+      Book, Book trial, Book drop-in, Waitlist, Booked, Wrong age.</p>
+    <div class="grid phones">
+      <figure class="shot">
+        <div class="frame"><img src="img/member/30-studio-badminton.png" alt="Badminton studio" /></div>
+        <figcaption>
+          <span class="tag">Studio</span>
+          <h4>Badminton · Info</h4>
+          <p>Courts, opening hours, hourly rate, and the day strip. Book opens the hourly start/end picker.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/31-studio-badminton-reviews.png" alt="Badminton reviews" /></div>
+        <figcaption>
+          <span class="tag">Reviews</span>
+          <h4>Write a review</h4>
+          <p>One review per shop per member (upsert). Photos upload with the text. The first review awards +20 coins.
+          </p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/32-studio-badminton-rules.png" alt="Badminton rules" /></div>
+        <figcaption>
+          <span class="tag">Rules</span>
+          <h4>Cancel window &amp; no-show</h4>
+          <p>Free-cancel deadline, late cancel, and no-show policy as the shop published them.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/33-studio-pickleball.png" alt="Pickleball studio" /></div>
+        <figcaption>
+          <span class="tag">Studio</span>
+          <h4>Pickleball · Info</h4>
+          <p>Hourly court ₩24,000 / hour, lesson pass, monthly and session packs. Book opens the start / end picker.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/34-studio-pickleball-reviews.png" alt="Pickleball reviews" /></div>
+        <figcaption>
+          <span class="tag">Reviews</span>
+          <h4>Pickleball reviews</h4>
+          <p>Same review model on every sport. Coins only fire when the review is newly created, not on an edit.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/35-studio-pilates.png" alt="Pilates studio" /></div>
+        <figcaption>
+          <span class="tag">Studio</span>
+          <h4>Pilates · Info</h4>
+          <p>Classes: 50-minute ticket (리포머) and pack class (매트). Passes grouped as Monthly pack, Session pack, Trainer
+            pack.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/36-studio-pilates-reviews.png" alt="Pilates reviews" /></div>
+        <figcaption>
+          <span class="tag">Reviews</span>
+          <h4>Pilates reviews</h4>
+          <p>Stars, body text, optional images. The desk sees the same member on the roster.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/37-studio-barre.png" alt="Barre studio" /></div>
+        <figcaption>
+          <span class="tag">Studio</span>
+          <h4>Barre · Info</h4>
+          <p>Geumho barre room: packs, instructors, and the week calendar. Guest visitors can still read the schedule.
+          </p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ════════════ ORDER BOOK ════════════ -->
+  <section class="block" id="orderbook">
+    <h2>Order book</h2>
+    <p class="section-lead">
+      One confirm screen, three ways to pay a visit, and three pack kinds when the shop sells membership.
+      The shop’s sport, class session type, and product list decide which path the member sees.
+      Extra actions sit around the booking: waitlist, cancel, Message chat, review + coins.
+    </p>
+
+    <h3>Three checkout modes</h3>
+    <p class="section-lead">How a single visit is charged. The app labels these Hourly, ticket, and pack.</p>
+    <div class="catalog">
+      <article class="cat">
+        <div class="who">Mode 1</div>
+        <h4>Hourly rental</h4>
+        <div class="vi">Thuê theo giờ · 시간 요금</div>
+        <p>Court drop-in whose name includes 코트 and not 레슨. Member picks start and end inside opening hours.</p>
+        <ul>
+          <li>30-minute steps, 60-minute minimum</li>
+          <li>Total = posted hourly rate × stay × quantity</li>
+          <li>Bank transfer QR, or pay at the venue</li>
+          <li>Badminton 옥수 ₩21,600 / hour · pickleball 서울숲 ₩24,000 / hour</li>
+        </ul>
+      </article>
+      <article class="cat">
+        <div class="who">Mode 2</div>
+        <h4>Drop-in ticket</h4>
+        <div class="vi">Vé lẻ · 분권 / 시간권</div>
+        <p>A fixed-length visit at a posted drop-in or trial price. No extra time blocks. No pack required.</p>
+        <ul>
+          <li>DROP_IN or TRIAL class that is not a court rental</li>
+          <li>Quantity stepper only</li>
+          <li>Pilates 리포머: 50-minute ticket ₩35,000</li>
+          <li>When membership is off, the app never sends the member to buy a pack</li>
+        </ul>
+      </article>
+      <article class="cat">
+        <div class="who">Mode 3</div>
+        <h4>Pack checkout</h4>
+        <div class="vi">Theo gói · 이용권</div>
+        <p>A class or lesson paid with a pass. Confirm holds a seat. A session is used only after attend.</p>
+        <ul>
+          <li>PACKAGE class, or a court 레슨</li>
+          <li>Pass on file → nothing more is due</li>
+          <li>No matching pass → buy a pack on the same screen</li>
+          <li>Remaining sessions show on You</li>
+        </ul>
+      </article>
+    </div>
+
+    <h3>Three pack kinds</h3>
+    <p class="section-lead">
+      When the member buys a pack, Confirm and the studio Info tab group the shop’s product list.
+      The desk owns the prices on Products. The app only groups them.
+    </p>
+    <div class="pills">
+      <span class="pill month">Monthly pack · Gói theo tháng · 월 이용권</span>
+      <span class="pill pass">Session pack · Gói theo buổi · 횟수 이용권</span>
+      <span class="pill trainer">Trainer pack · Gói huấn luyện viên · 강사 이용권</span>
+      <span class="pill trial">Trial pack · Gói trải nghiệm · 체험</span>
+    </div>
+    <div class="catalog">
+      <article class="cat">
+        <div class="who">Pack · Period</div>
+        <h4>Monthly pack</h4>
+        <div class="vi">Gói tập theo tháng</div>
+        <p>Product type PERIOD. Calendar validity, often with a weekly frequency.</p>
+        <ul>
+          <li>Example: 필라테스 1개월 · 1 month · 2 sessions/week · ₩180,000</li>
+          <li>Example: 키즈 주2회 · monthly at the barre desk</li>
+        </ul>
+      </article>
+      <article class="cat">
+        <div class="who">Pack · Count</div>
+        <h4>Session pack</h4>
+        <div class="vi">Gói tập theo buổi</div>
+        <p>Product type COUNT. Remaining sessions on the pass. Default pack when several COUNT products exist.</p>
+        <ul>
+          <li>Example: 리포머 8회 · 8 sessions · 6 months · ₩240,000</li>
+          <li>Example: 성인 12회 · 12 sessions · 6 left on file</li>
+        </ul>
+      </article>
+      <article class="cat">
+        <div class="who">Pack · Trainer</div>
+        <h4>Trainer pack</h4>
+        <div class="vi">Gói huấn luyện viên</div>
+        <p>A COUNT product whose name matches 레슨, 코치, 강사, 개인, huấn, trainer, or PT. Personal training, not the group
+          class pack.</p>
+        <ul>
+          <li>Example: 강사 개인 4회 · 4 sessions · 3 months · ₩280,000</li>
+          <li>Instructors are attached to classes on the desk before slots generate</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>App label</th>
+            <th>When it appears</th>
+            <th>Pay</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Hourly rental</td>
+            <td>Hourly · Theo giờ · 시간 요금</td>
+            <td>DROP_IN class named 코트, not 레슨. Badminton and pickleball courts.</td>
+            <td>Posted hourly rate × stay · transfer QR or pay at venue</td>
+          </tr>
+          <tr>
+            <td>Drop-in ticket</td>
+            <td>Ticket · Vé lẻ · 분권</td>
+            <td>DROP_IN or TRIAL that is not a court. Gym walk-in. Reformer drop-in.</td>
+            <td>Posted ticket × quantity. No pack.</td>
+          </tr>
+          <tr>
+            <td>Pack checkout</td>
+            <td>Pack · Theo gói · 이용권</td>
+            <td>PACKAGE class or a 레슨 on a court. Seat hold; session used after attend.</td>
+            <td>Pass on file, or buy a pack below</td>
+          </tr>
+          <tr>
+            <td>Monthly pack</td>
+            <td>Monthly pack · Gói theo tháng · 월 이용권</td>
+            <td>Desk product type PERIOD</td>
+            <td>List price · calendar months</td>
+          </tr>
+          <tr>
+            <td>Session pack</td>
+            <td>Session pack · Gói theo buổi · 횟수 이용권</td>
+            <td>Desk product type COUNT</td>
+            <td>List price · remaining sessions</td>
+          </tr>
+          <tr>
+            <td>Trainer pack</td>
+            <td>Trainer pack · Gói HLV · 강사 이용권</td>
+            <td>COUNT product named after a coach</td>
+            <td>List price · personal-training sessions</td>
+          </tr>
+          <tr>
+            <td>Trial</td>
+            <td>Trial pack · Gói trải nghiệm · 체험</td>
+            <td>Shop trial flag on, plus a TRIAL product or TRIAL pass. Age window can block the slot.</td>
+            <td>Trial product (유료 체험) or trial pass 🎟</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Confirm screens</h3>
+    <div class="grid phones">
+      <figure class="shot">
+        <div class="frame"><img src="img/member/40-book-hourly.png" alt="Hourly court booking" /></div>
+        <figcaption>
+          <span class="tag">Hourly · thuê theo giờ</span>
+          <h4>Court by the hour</h4>
+          <p>Badminton 옥수 · 코트 1. Drop-in hourly. Start and end in 30-minute steps, minimum 1 hour, open 09:00–21:00.
+            Total ₩21,600 for 10:00–11:00. Transfer QR or pay at the venue.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/41-book-ticket.png" alt="Pickleball hourly court" /></div>
+        <figcaption>
+          <span class="tag">Hourly · pickleball</span>
+          <h4>Pickleball court</h4>
+          <p>피클볼 서울숲 uses the same hourly picker: open 08:00–22:00, ₩24,000 / hour, quantity, transfer QR. A lesson pass
+            slot (레슨) sits under the court on the same day.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/45-book-dropin.png" alt="Drop-in ticket booking" /></div>
+        <figcaption>
+          <span class="tag">Ticket · vé lẻ</span>
+          <h4>Drop-in ticket</h4>
+          <p>Pilates 리포머. Orange Drop-in badge, 50-minute ticket ₩35,000, quantity stepper, bank transfer and optional
+            receipt photo. No pack required.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/42-book-pass.png" alt="Buy monthly, session, or trainer pack" /></div>
+        <figcaption>
+          <span class="tag">Packs · theo gói</span>
+          <h4>Buy a pack, then book</h4>
+          <p>Pilates 매트 has no pass on file. Confirm groups Monthly pack (1개월), Session pack (리포머 8회), and Trainer pack
+            (강사 개인 4회). Transfer ₩240,000 for the selected session pack. The desk issues it after checking the receipt.
+          </p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/46-book-pack-month.png" alt="Monthly pack selected" /></div>
+        <figcaption>
+          <span class="tag">Monthly pack · theo tháng</span>
+          <h4>Gói tập theo tháng</h4>
+          <p>PERIOD product. 필라테스 1개월 · 1 month · 2 sessions/week · ₩180,000. Calendar validity. Transfer the list
+            price; the desk starts the month after the receipt.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/47-book-pack-sessions.png" alt="Session pack selected" /></div>
+        <figcaption>
+          <span class="tag">Session pack · theo buổi</span>
+          <h4>Gói tập theo buổi</h4>
+          <p>COUNT product, default when several packs exist. 리포머 8회 · 8 sessions · 6 months · ₩240,000. Remaining
+            sessions show on You after the desk issues the pass.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/48-book-pack-trainer.png" alt="Trainer pack selected" /></div>
+        <figcaption>
+          <span class="tag">Trainer pack · huấn luyện viên</span>
+          <h4>Gói huấn luyện viên</h4>
+          <p>COUNT product named 강사 / 코치 / 개인. 강사 개인 4회 · 4 sessions · 3 months · ₩280,000. Personal training, not the
+            group class pack. Instructors live on the desk roster.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/43-book-barre.png" alt="Pay with a session pack" /></div>
+        <figcaption>
+          <span class="tag">Session pack · theo buổi</span>
+          <h4>Pay with your pack</h4>
+          <p>캡슐바레 금호점 adult group. Session pack on file: 성인 12회 · 6 left. Nothing more is due. Confirm holds a seat; a
+            session is used after attend. Slot list shows Pass, Booked, Waitlist, or Age limit.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/35-studio-pilates.png" alt="Studio packs grouped by kind" /></div>
+        <figcaption>
+          <span class="tag">Studio Info · packs</span>
+          <h4>Packs on the studio</h4>
+          <p>Info lists classes (ticket vs pack) then Passes in the same three groups the confirm screen uses: Monthly,
+            Session, Trainer. This is the catalog before the member taps Book.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/shop/11-products.png" alt="Desk product list" /></div>
+        <figcaption>
+          <span class="tag">Desk · Products</span>
+          <h4>Where packs are priced</h4>
+          <p>Owner list: Sessions, Period, Trial. 성인 12회 is a session pack. 키즈 주2회 is a monthly pack. 유료 체험 is the trial
+            product. Trainer packs are COUNT rows named after a coach.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/shop/15-instructors.png" alt="Instructor roster" /></div>
+        <figcaption>
+          <span class="tag">Desk · Instructors</span>
+          <h4>Trainers on the roster</h4>
+          <p>Attach instructors to classes before generating slots. Member-facing trainer packs point at COUNT products;
+            the people who teach live here and on payroll.</p>
+        </figcaption>
+      </figure>
+    </div>
+
+    <h3>Actions around a booking</h3>
+    <div class="grid phones">
+      <figure class="shot">
+        <div class="frame"><img src="img/member/50-bookings.png" alt="My bookings" /></div>
+        <figcaption>
+          <span class="tag">My bookings</span>
+          <h4>Upcoming &amp; past</h4>
+          <p>FAB Book tab. Status chips: Confirmed, Pending, Waitlist, Canceled, Late cancel, No-show. Empty state sends
+            you to Discover.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/51-booking-detail.png" alt="Booking detail" /></div>
+        <figcaption>
+          <span class="tag">Detail</span>
+          <h4>One reservation</h4>
+          <p>When, teacher, pass, cancel-until. Cancel seat inside the free window. Leave waitlist if you are on the
+            list. Message opens shop chat.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/52-booking-chat.png" alt="Booking chat" /></div>
+        <figcaption>
+          <span class="tag">Chat</span>
+          <h4>Message the shop</h4>
+          <p>Two-way thread tied to this reservation. Desk staff reply from Lessons. Polls every 8 seconds. Unread badge
+            on You.</p>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="callout">
+      Unique reservation is <code>(sessionId, memberId)</code>. Full classes offer Join waitlist — the pass is not used
+      until a seat opens.
+      Cici can also book, list upcoming, and cancel from chat, but a tap on Confirm / Cancel is still required.
+    </div>
+  </section>
+
+  <section class="block">
+    <h3>You, shop, inbox, Cici, settings</h3>
+    <div class="grid phones">
+      <figure class="shot">
+        <div class="frame"><img src="img/member/60-you.png" alt="You profile" /></div>
+        <figcaption>
+          <span class="tag">Tab · You</span>
+          <h4>Profile</h4>
+          <p>Look video, name, level, XP / streak / coins. Linked studios with trainers and remaining sessions. Tiles:
+            Wardrobe, Bookings, Coins, Settings. Inbox row with unread.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/61-inbox.png" alt="Inbox list" /></div>
+        <figcaption>
+          <span class="tag">Inbox</span>
+          <h4>Threads</h4>
+          <p>One thread per booking chat. Last message preview. Opens the same conversation as Message on the booking.
+          </p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/62-inbox-thread.png" alt="Inbox thread" /></div>
+        <figcaption>
+          <span class="tag">Thread</span>
+          <h4>Conversation</h4>
+          <p>Member and desk messages in order. Live data only — no fake shops.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/63-shop.png" alt="Coin shop" /></div>
+        <figcaption>
+          <span class="tag">Coins</span>
+          <h4>Cici shop</h4>
+          <p>Spend coins on backgrounds, frames, and companions. Reviews and signup award coins. This is Cici’s wardrobe
+            shop, not the sports venue.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/64-wardrobe.png" alt="Wardrobe" /></div>
+        <figcaption>
+          <span class="tag">Wardrobe</span>
+          <h4>Looks</h4>
+          <p>Equip outfits earned or bought. The look shows on Home and You.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/65-notifications.png" alt="Notifications" /></div>
+        <figcaption>
+          <span class="tag">Alerts</span>
+          <h4>Notification inbox</h4>
+          <p>Delivered booking, waitlist, and system notices. Separate from shop chat.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/66-settings.png" alt="Settings" /></div>
+        <figcaption>
+          <span class="tag">Settings</span>
+          <h4>Language &amp; alerts</h4>
+          <p>English, Tiếng Việt, 한국어. Opens the notification inbox and per-channel alert switches.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/67-notification-settings.png" alt="Notification settings" /></div>
+        <figcaption>
+          <span class="tag">Settings</span>
+          <h4>Notification settings</h4>
+          <p>Choose which events ping the phone: bookings, waitlist, chat, missions.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/70-cici.png" alt="Cici chat" /></div>
+        <figcaption>
+          <span class="tag">Tab · Cici</span>
+          <h4>Assistant</h4>
+          <p>Chips: Book a class, My missions, My level. Commands: book, next class, my bookings, cancel, my pass, shop,
+            coins, help.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame"><img src="img/member/71-cici-reply.png" alt="Cici reply" /></div>
+        <figcaption>
+          <span class="tag">Cici</span>
+          <h4>Book from chat</h4>
+          <p>Open classes for the next 7 days. Tap a class to review. Nothing is reserved until Confirm on the book
+            screen.</p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ════════════ ADMIN ════════════ -->
+  <section class="block" id="admin">
+    <h2>Platform admin</h2>
+    <p class="section-lead">
+      Super-admin HQ at <code>/platform</code>. This account is not pinned to a shop — shop APIs return
+      <code>STORE_SCOPE_REQUIRED</code>. Demo: <code>demo@aicc.com</code> / <code>Test1234!</code>.
+    </p>
+    <div class="grid wide">
+      <figure class="shot">
+        <div class="desk"><img src="img/admin/00-home.png" alt="Platform home" /></div>
+        <figcaption>
+          <span class="tag">SA0 · /platform</span>
+          <h4>Platform home</h4>
+          <p>Landing for HQ. Cards jump to stores, accounts, support, AI limits, AI features, variable catalog, and the
+            system checker. The legacy approve console stays in the sidebar only.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/admin/01-stores.png" alt="Platform stores" /></div>
+        <figcaption>
+          <span class="tag">Stores · /platform/stores</span>
+          <h4>Store list</h4>
+          <p>Every published shop on the platform. Open a row for store detail, sport, and operating flags including
+            membership / trial / drop-in.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/admin/02-accounts.png" alt="Platform accounts" /></div>
+        <figcaption>
+          <span class="tag">Accounts · /platform/accounts</span>
+          <h4>Account search</h4>
+          <p>Find owners, instructors, and members across shops. Open a user for role and store membership.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/admin/03-support.png" alt="Platform support" /></div>
+        <figcaption>
+          <span class="tag">Support · /platform/support</span>
+          <h4>Tickets</h4>
+          <p>HQ support queue. Super-admin can sit in on a shop session when a ticket needs the live desk.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/admin/04-ai-limits.png" alt="AI limits" /></div>
+        <figcaption>
+          <span class="tag">AI · /platform/ai/limits</span>
+          <h4>AI limits</h4>
+          <p>Rate and quota controls for shop agents. HQ sets the ceiling; each shop still picks templates under
+            Settings → Agents.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/admin/05-ai-features.png" alt="AI features" /></div>
+        <figcaption>
+          <span class="tag">AI · /platform/ai/features</span>
+          <h4>AI features</h4>
+          <p>Feature flags for capture, notices, and agent actions. Turn a capability on for the whole platform before a
+            shop can use it.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/admin/06-ai-variables.png" alt="AI variables" /></div>
+        <figcaption>
+          <span class="tag">AI · /ai/monitoring/variables</span>
+          <h4>Variable catalog</h4>
+          <p>Named values the agents read. Used when a template fills a contract, notice, or task.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/admin/07-system-checker.png" alt="System checker" /></div>
+        <figcaption>
+          <span class="tag">System · /su-system-checker</span>
+          <h4>System checker</h4>
+          <p>Health of API, jobs, and storage. Run this after a deploy or when a shop reports a blank screen.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/admin/08-legacy-console.png" alt="Legacy console" /></div>
+        <figcaption>
+          <span class="tag">Legacy · /approve/dashboards</span>
+          <h4>Legacy approve console</h4>
+          <p>Older HQ dashboards still linked until capture, coupons, and remaining approve screens move under
+            <code>/platform/*</code>.
+          </p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ════════════ SHOP OWNER ════════════ -->
+  <section class="block" id="shop">
+    <h2>Shop owner</h2>
+    <p class="section-lead">
+      Desk at <code>http://localhost:8020</code>. Owner tabs: Home, Tasks, Capture, Members, More.
+      Login: <code>admin@aicc.com</code> or <code>owner.geumho@example.com</code> / <code>Test1234!</code>.
+      Enter data in this order: Settings → Instructors → Products → Classes + generate slots → Members (phone) →
+      Reservations.
+    </p>
+
+    <h3>Today</h3>
+    <div class="grid wide">
+      <figure class="shot">
+        <div class="desk"><img src="img/shop/00-home.png" alt="Store home" /></div>
+        <figcaption>
+          <span class="tag">S-00 · /store</span>
+          <h4>Store home</h4>
+          <p>캡슐바레 금호점 owner home: 11 tasks, today’s revenue, members in class. Work happens on Tasks. Store switcher
+            pins this shop.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/shop/01-tasks.png" alt="Store tasks" /></div>
+        <figcaption>
+          <span class="tag">S-01 · /store/tasks</span>
+          <h4>Tasks</h4>
+          <p>What to do now. Agents and people drop work here: follow up a lead, confirm a reservation, review a
+            captured contract.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/shop/02-task-history.png" alt="Task history" /></div>
+        <figcaption>
+          <span class="tag">S-25 · /store/tasks/history</span>
+          <h4>Task history</h4>
+          <p>What already went out and how it finished. Needed before L4 auto-send is safe to turn on.</p>
+        </figcaption>
+      </figure>
+    </div>
+
+    <h3>Roster &amp; schedule</h3>
+    <div class="grid wide">
+      <figure class="shot">
+        <div class="desk"><img src="img/shop/10-members.png" alt="Members" /></div>
+        <figcaption>
+          <span class="tag">S-02 · /store/members</span>
+          <h4>Members</h4>
+          <p>The ledger. Phone is the key that links the member app. Empty phone → empty shop in the app. Issue
+            memberships from the member row.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/shop/11-products.png" alt="Products" /></div>
+        <figcaption>
+          <span class="tag">S-18 · /store/products</span>
+          <h4>Products</h4>
+          <p>The price list members buy against. Period = monthly pack. Sessions = session pack. A session product whose
+            name matches 레슨 / 코치 / 강사 / trainer / PT becomes a trainer pack in the app. Trial (유료 체험) and drop-in
+            tickets sit on the same table.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/shop/12-classes.png" alt="Classes" /></div>
+        <figcaption>
+          <span class="tag">S-19 · /store/classes</span>
+          <h4>Classes</h4>
+          <p>Class definitions and session kind: trial, drop-in, or package. Drop-in on a 코트 becomes hourly rental in
+            the app. Package (and 레슨) become pack checkout. Generate slots after instructors are attached.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/shop/13-schedule.png" alt="Schedule" /></div>
+        <figcaption>
+          <span class="tag">S-14 · /store/schedule</span>
+          <h4>Schedule</h4>
+          <p>The board the desk opens when someone asks “is there a seat?”. Future openings, not attendance.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/shop/14-lessons.png" alt="Lessons and reservations" /></div>
+        <figcaption>
+          <span class="tag">S-20 · /store/lessons</span>
+          <h4>Lessons / reservations</h4>
+          <p>Who came, who is booked, who messaged. Reply to member chat here. Confirm, no-show, and cancel from the
+            row.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/shop/15-instructors.png" alt="Instructors" /></div>
+        <figcaption>
+          <span class="tag">S-17 · /store/instructors</span>
+          <h4>Instructors</h4>
+          <p>People who teach. Attach them to classes before generating slots. Trainer packs in the member app are COUNT
+            products named after a coach; payroll later reads this roster.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/shop/16-instructor-tasks.png" alt="Instructor tasks from owner" /></div>
+        <figcaption>
+          <span class="tag">S-23 · /instructor/tasks</span>
+          <h4>Instructor tasks (owner view)</h4>
+          <p>The instructor inbox, also reachable from the owner sidebar until the instructor role has its own shell
+            everywhere.</p>
+        </figcaption>
+      </figure>
+    </div>
+
+    <h3>Tools &amp; records</h3>
+    <div class="grid wide">
+      <figure class="shot">
+        <div class="desk"><img src="img/shop/20-capture.png" alt="Capture" /></div>
+        <figcaption>
+          <span class="tag">S-03 · /store/capture</span>
+          <h4>Capture</h4>
+          <p>Photograph a contract or receipt. The image becomes a document the shop can search later.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/shop/21-capture-status.png" alt="Capture status" /></div>
+        <figcaption>
+          <span class="tag">Capture status</span>
+          <h4>Capture status</h4>
+          <p>What was read, what still needs a human check. Owner-only manage permission.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/shop/22-templates.png" alt="Templates" /></div>
+        <figcaption>
+          <span class="tag">S-06 · /store/templates</span>
+          <h4>Task templates</h4>
+          <p>How work is created and how far an agent may go (L0–L4). Autonomy lives here, not on the Agents screen.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/shop/23-contract-templates.png" alt="Contract templates" /></div>
+        <figcaption>
+          <span class="tag">Contracts · /store/contract-templates</span>
+          <h4>Contract templates</h4>
+          <p>Forms filled when a membership is issued. Capture matches against these pages.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/shop/24-monitoring.png" alt="Monitoring" /></div>
+        <figcaption>
+          <span class="tag">S-07 · /store/monitoring</span>
+          <h4>Monitoring</h4>
+          <p>Agent activity for this shop. Watch a run without leaving the desk.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/shop/25-documents.png" alt="Documents" /></div>
+        <figcaption>
+          <span class="tag">S-24 · /store/documents</span>
+          <h4>Documents</h4>
+          <p>Search original captures. Start here for a tax visit or a member dispute.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/shop/26-notices.png" alt="Notices" /></div>
+        <figcaption>
+          <span class="tag">S-22 · /store/notices</span>
+          <h4>Notices</h4>
+          <p>Shop-wide announcements. Duplicate-send protection only works if the desk uses this instead of a group
+            text.</p>
+        </figcaption>
+      </figure>
+    </div>
+
+    <h3>Accounting &amp; reports</h3>
+    <div class="grid wide">
+      <figure class="shot">
+        <div class="desk"><img src="img/shop/30-expenses.png" alt="Expenses" /></div>
+        <figcaption>
+          <span class="tag">Expenses · /store/expenses</span>
+          <h4>Expenses</h4>
+          <p>Receipts the shop paid. Capture can seed a row; the owner confirms the amount.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/shop/31-payroll.png" alt="Payroll" /></div>
+        <figcaption>
+          <span class="tag">Payroll · /store/payroll</span>
+          <h4>Payroll</h4>
+          <p>Runs per instructor. Lesson confirmations on the instructor home feed this table.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/shop/32-bookkeeping.png" alt="Bookkeeping" /></div>
+        <figcaption>
+          <span class="tag">Bookkeeping · /store/bookkeeping</span>
+          <h4>Bookkeeping</h4>
+          <p>Journal of membership sales, drop-ins, and expenses in one ledger.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/shop/33-cashflow.png" alt="Cashflow" /></div>
+        <figcaption>
+          <span class="tag">Cashflow · /store/cashflow</span>
+          <h4>Cashflow</h4>
+          <p>Money in and out over the month. Masked amounts toggle in the header.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/shop/34-dashboard.png" alt="Dashboard" /></div>
+        <figcaption>
+          <span class="tag">Dashboard · /store/dashboard</span>
+          <h4>Dashboard</h4>
+          <p>Charts on the same cashflow numbers. Home stays operational; this page is for the month review.</p>
+        </figcaption>
+      </figure>
+    </div>
+
+    <h3>Setup</h3>
+    <div class="grid wide">
+      <figure class="shot">
+        <div class="desk"><img src="img/shop/40-settings.png" alt="Store settings" /></div>
+        <figcaption>
+          <span class="tag">S-16 · /store/settings</span>
+          <h4>Settings</h4>
+          <p>Shop name, hours, rooms, equipment, sport, and booking flags: membership, trial, drop-in. These flags drive
+            the member app CTAs.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/shop/41-agents.png" alt="Agents" /></div>
+        <figcaption>
+          <span class="tag">S-15 · /store/settings/agents</span>
+          <h4>Agents</h4>
+          <p>Which bots this shop runs. Autonomy level is set on the template, not here.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/shop/42-permissions.png" alt="Permissions" /></div>
+        <figcaption>
+          <span class="tag">S-27 · /store/settings/permissions</span>
+          <h4>Permissions</h4>
+          <p>Per-person access for instructors and acting owners. Role defaults are not enough for every shop.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/shop/50-more.png" alt="More menu" /></div>
+        <figcaption>
+          <span class="tag">More · /store/more</span>
+          <h4>More</h4>
+          <p>Mobile overflow of the full sidebar. Same items as the desktop nav, grouped: today, roster, tools,
+            accounting, reports, setup.</p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ════════════ INSTRUCTOR ════════════ -->
+  <section class="block" id="instructor">
+    <h2>Instructor</h2>
+    <p class="section-lead">
+      Instructor tabs: Home, Tasks, Lessons, More. Seed logins:
+      <code>t1.jihoon@example.com</code>, <code>t2.somi@example.com</code> / <code>Test1234!</code>.
+      The owner can also open the same task list from the store sidebar.
+    </p>
+    <div class="grid wide">
+      <figure class="shot">
+        <div class="desk"><img src="img/instructor/00-home.png" alt="Instructor home" /></div>
+        <figcaption>
+          <span class="tag">/instructor/home</span>
+          <h4>Instructor home</h4>
+          <p>Today’s open confirmations, character mood from pending count, and payroll accrual so far. Same data as the
+            task list, laid out as a home.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/instructor/01-tasks.png" alt="Instructor tasks" /></div>
+        <figcaption>
+          <span class="tag">/instructor/tasks</span>
+          <h4>Confirm lessons</h4>
+          <p>Each row is a class to confirm. Closing a task feeds payroll. Detail is
+            <code>/instructor/tasks/[id]</code>.
+          </p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/instructor/02-lessons.png" alt="Instructor lessons" /></div>
+        <figcaption>
+          <span class="tag">/store/lessons</span>
+          <h4>Lessons</h4>
+          <p>Who is on the sheet. Instructors read attendance; write access follows shop permissions.</p>
+        </figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="desk"><img src="img/instructor/03-more.png" alt="Instructor more" /></div>
+        <figcaption>
+          <span class="tag">/store/more</span>
+          <h4>More</h4>
+          <p>Remaining instructor-visible items. The shell hides owner-only accounting when the role cannot read it.</p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="deploy" id="deploy">
+    <div class="inner">
+      <h2>Put this on Netlify</h2>
+      <p>This folder is already a static site. No build step. Push to <code>main</code> on <code>joshMetalab/capsule-barre-member-app</code> and Netlify republishes.</p>
+      <p>Local preview:</p>
+      <pre>npx --yes serve . -p 4173</pre>
+    </div>
+  </section>
+
+  <footer>
+    Cici product report · English · live screens from the local stack · member :8081 · desk :8020 · not a marketplace or
+    map demo.
+  </footer>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <button type="button" class="lightbox-close" aria-label="Close">×</button>
+    <img alt="" />
+    <p class="lightbox-cap"></p>
+  </div>
+
+  <script>
+    document.querySelectorAll("img").forEach((img) => {
+      img.addEventListener("error", () => {
+        const shot = img.closest(".shot");
+        if (shot) shot.classList.add("missing");
+      });
+    });
+
+    (function lightbox() {
+      const box = document.getElementById("lightbox");
+      const pic = box.querySelector("img");
+      const cap = box.querySelector(".lightbox-cap");
+      const closeBtn = box.querySelector(".lightbox-close");
+
+      function captionFor(img) {
+        const shot = img.closest(".shot");
+        const title = shot?.querySelector("h4")?.textContent?.trim();
+        return title || img.alt || "";
+      }
+
+      function open(img) {
+        pic.src = img.currentSrc || img.src;
+        pic.alt = img.alt || "";
+        cap.textContent = captionFor(img);
+        box.hidden = false;
+        document.body.classList.add("lb-open");
+        closeBtn.focus();
+      }
+
+      function close() {
+        box.hidden = true;
+        pic.removeAttribute("src");
+        document.body.classList.remove("lb-open");
+      }
+
+      document.querySelectorAll(".frame img, .desk img").forEach((img) => {
+        img.addEventListener("click", () => open(img));
+      });
+      closeBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        close();
+      });
+      box.addEventListener("click", (e) => {
+        if (e.target === box) close();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !box.hidden) close();
+      });
+    })();
+  </script>
+</body>
+
+</html>

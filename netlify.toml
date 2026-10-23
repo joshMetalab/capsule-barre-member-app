@@ -1,9 +1,9 @@
-# Static member demo. No build step: Netlify publishes this repo as-is.
+# Cici product report. Static, no build. Netlify publishes this repo as-is.
 [build]
   publish = "."
 
-# Opening the site root shows the member app. Asset paths stay relative to /.
-[[redirects]]
-  from = "/"
-  to = "/platform-app.html"
-  status = 200
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
